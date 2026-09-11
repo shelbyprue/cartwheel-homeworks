@@ -9,8 +9,16 @@ data/cartwheel.db
 
 # Local conversation state and scenario/replay run outputs.
 .sessions.db
+.sessions.db-shm
+.sessions.db-wal
 scenarios/results/
 replay/results/
+
+# Local HW1 working notes and captured CLI transcripts (not submission files).
+.hw1-progress.md
+.hw1-tools-reference.md
+.hw1-video-script.md
+.hw1-logs/
 
 # Python
 __pycache__/
