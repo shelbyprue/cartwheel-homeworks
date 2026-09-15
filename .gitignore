@@ -26,3 +26,8 @@ __pycache__/
 .venv/
 .pytest_cache/
 scenarios/demo_pilot_gt.json
+
+# Local HW2 working notes.
+.hw2-progress.md
+.hw2-logs/
+.hw2-local/
