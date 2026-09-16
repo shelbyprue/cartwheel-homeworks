@@ -33,3 +33,5 @@ scenarios/demo_pilot_gt.json
 .hw2-local/
 .hw2-video-script.md
 .phoenix-venv/
+.hw3-notes.md
+.hw3-logs/
