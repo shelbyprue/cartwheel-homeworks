@@ -127,7 +127,9 @@ def record_tool_result(ctx: "AuthContext", result: dict[str, Any]) -> None:
     # inconsistently, and Module 3 asserts on the string form.
     span.set_attribute("cartwheel.user_id", str(ctx.user_id))
     if ctx.store_id is not None:
-        span.set_attribute("cartwheel.store_id", ctx.store_id)
+        # String, per the contract: trace backends treat integer attributes
+        # inconsistently, so both ids are recorded in their decimal string form.
+        span.set_attribute("cartwheel.store_id", str(ctx.store_id))
     _set_permission_denied_attributes(span, result)
 
 
