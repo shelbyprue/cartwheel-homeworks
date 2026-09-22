@@ -3,7 +3,7 @@
  "definition": "The conversation contains a clear signal for human handoff \u2014 an account change, a damaged record, a repeated or frustrated request \u2014 and escalate_to_human is never called.",
  "boundary": "Not this: escalation offered and the conversation ends before the user accepts.",
  "requirement_source": "SPEC.md ESC-2, ESC-3, ESC-4",
- "labelled_at": "2026-09-22T14:24:38.454993+00:00",
+ "labelled_at": "2026-09-22T17:17:55.585321+00:00",
  "score_destination": "analysis/state/labels only; Langfuse was never available (Docker could not be installed)",
  "reviewed_sample_size": 102,
  "present": 3,

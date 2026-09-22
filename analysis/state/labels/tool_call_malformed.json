@@ -3,7 +3,7 @@
  "definition": "The agent sends arguments the tool rejects \u2014 the literal string \"null\" for optional parameters, or a store filter that does not exist \u2014 and the call fails before reaching the application.",
  "boundary": "Not this: a well-formed call that returns an empty or negative result.",
  "requirement_source": "SPEC.md TOOL-3",
- "labelled_at": "2026-09-22T14:24:38.452992+00:00",
+ "labelled_at": "2026-09-22T17:17:55.582905+00:00",
  "score_destination": "analysis/state/labels only; Langfuse was never available (Docker could not be installed)",
  "reviewed_sample_size": 102,
  "present": 17,

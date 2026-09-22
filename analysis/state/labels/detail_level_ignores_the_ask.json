@@ -3,7 +3,7 @@
  "definition": "The amount of detail contradicts the ask: a shorthand request answered at length, an open request answered with one unexplained fact, or a brief answer that drops facts the reader needs (the dates, the policy that decided it).",
  "boundary": "Length alone is not the signal. A long reply to a terse user is not this mode: five such candidates were reviewed and all five rejected. The failure is omitting the basis for the decision \u2014 the deciding rule, the window, the dates \u2014 whatever the length. Not this either: a short reply that is short because the agent abandoned the task, which is abandons_mid_task.",
  "requirement_source": "SPEC.md RESP-5",
- "labelled_at": "2026-09-22T14:24:38.459320+00:00",
+ "labelled_at": "2026-09-22T17:17:55.589108+00:00",
  "score_destination": "analysis/state/labels only; Langfuse was never available (Docker could not be installed)",
  "reviewed_sample_size": 102,
  "present": 5,

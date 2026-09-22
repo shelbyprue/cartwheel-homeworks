@@ -3,7 +3,7 @@
  "definition": "The reply proposes a next step that does not apply: a return when the complaint is non-delivery, an exception before any review, a replacement for an ineligible order, or another order that may not exist.",
  "boundary": "Not this: offering escalation where the user has raised something the agent genuinely cannot resolve.",
  "requirement_source": "SPEC.md RESP-3, ESC-4",
- "labelled_at": "2026-09-22T14:24:38.457861+00:00",
+ "labelled_at": "2026-09-22T17:17:55.587596+00:00",
  "score_destination": "analysis/state/labels only; Langfuse was never available (Docker could not be installed)",
  "reviewed_sample_size": 102,
  "present": 10,

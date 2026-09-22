@@ -3,7 +3,7 @@
  "definition": "The reply cites a policy using its internal identifier (cw-returns, store-northwind-books-policy) rather than naming it in plain language. The citation itself is required; printing the internal label is the failure.",
  "boundary": "Not this: 'per our return policy' with no identifier. Also not this: the identifier recorded on the trace, which is correct and required.",
  "requirement_source": "SPEC.md RESP-1, as revised \u2014 see analysis/report/spec_revisions.md",
- "labelled_at": "2026-09-22T14:24:38.451393+00:00",
+ "labelled_at": "2026-09-22T17:17:55.581631+00:00",
  "score_destination": "analysis/state/labels only; Langfuse was never available (Docker could not be installed)",
  "reviewed_sample_size": 102,
  "present": 50,

@@ -3,7 +3,7 @@
  "definition": "The tools returned refund_eligible, and the reply reaches the opposite conclusion \u2014 denying a refund the flag allows, or implying one the flag forbids.",
  "boundary": "Not this: a denial that matches refund_eligible: false, or an approval that matches true. Not this either: a reply that reaches no eligibility conclusion at all, which is abandons_mid_task. This mode requires a stated conclusion that is the opposite of the flag.",
  "requirement_source": "SPEC.md RESP-2, RESP-3",
- "labelled_at": "2026-09-22T14:24:38.456010+00:00",
+ "labelled_at": "2026-09-22T17:17:55.586047+00:00",
  "score_destination": "analysis/state/labels only; Langfuse was never available (Docker could not be installed)",
  "reviewed_sample_size": 102,
  "present": 15,

@@ -3,7 +3,7 @@
  "definition": "The reply's final sentence announces a step the agent is about to take \u2014 pulling the order, checking the policy \u2014 and the turn ends without that step being taken or any conclusion reached. The user receives a progress report instead of an answer.",
  "boundary": "The deciding question is whether the user received an answer. If the reply reaches no conclusion at all, this mode applies regardless of what the conversation was about. Not this: an agent that announces a lookup and then performs it in the same turn. Not this: a deliberate question back to the user, which is defers_what_was_asked. Not this: a conditional offer ('let me know and I can open a ticket'), which completes the turn and hands the user a next step.",
  "requirement_source": "SPEC.md RESP-2, RESP-3 \u2014 the reply neither reports a result nor states that information is missing",
- "labelled_at": "2026-09-22T14:24:38.453963+00:00",
+ "labelled_at": "2026-09-22T17:17:55.584545+00:00",
  "score_destination": "analysis/state/labels only; Langfuse was never available (Docker could not be installed)",
  "reviewed_sample_size": 102,
  "present": 4,

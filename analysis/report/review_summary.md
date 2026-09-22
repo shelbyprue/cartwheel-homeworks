@@ -82,6 +82,15 @@ No observation in the batch required a new category, and no observation was set 
 unclassifiable. The handout's instruction to review a further batch if several new modes
 appear did not trigger.
 
+Two of the seven — support-0008 and support-0059 — had been marked "no failure observed"
+on first reading and were caught by a code rule: a rejected `search_products` call in one,
+a printed `cw-refunds` identifier in the other. On re-reading, the reviewer confirmed both
+as oversights rather than a difference of interpretation. They are the same two issues
+already noted many times over elsewhere in the sample, and they were missed late in a long
+review. Both are labelled present. They are the clearest argument in this analysis for
+writing deterministic rules where a mode admits one: a rule does not get tired at the
+fortieth conversation.
+
 One caveat worth stating plainly: a batch that produces no new modes shows the taxonomy is
 stable **against the kinds of failure this dataset contains**. All 261 conversations came
 from one agent, one model, and one seeded world. Stability here is not evidence that the

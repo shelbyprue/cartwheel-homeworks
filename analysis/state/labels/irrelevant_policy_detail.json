@@ -3,7 +3,7 @@
  "definition": "The reply explains a rule that does not govern this case: the 30-day platform default when a store override applies, the under-$100 automatic path on an order over $100, or a restocking-fee rule on an order that cannot be returned at all.",
  "boundary": "Not this: stating the one rule that actually decided the outcome, even at length. Not this: naming the store's override as the governing rule while mentioning the platform default as brief contrast \u2014 that is correct behaviour and explains why the number differs from what the shopper expected. This mode is the default explained as if it governs, a threshold that decided nothing, a fee the store has not opted into, or policy recited after the matter is already settled. Not this either: repeating a fact already given, which is recorded but not elevated to a mode.",
  "requirement_source": "SPEC.md RESP-5",
- "labelled_at": "2026-09-22T14:24:38.457023+00:00",
+ "labelled_at": "2026-09-22T17:17:55.586735+00:00",
  "score_destination": "analysis/state/labels only; Langfuse was never available (Docker could not be installed)",
  "reviewed_sample_size": 102,
  "present": 10,

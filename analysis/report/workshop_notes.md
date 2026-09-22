@@ -44,7 +44,7 @@ missed. That is the lesson Part C teaches, arrived at from the other direction.
 
 ### What was built for Homework 4
 
-**`.hw4-logs/label.py`** — a detector per failure mode, run over every reviewed trace. Five
+**`analysis/tools/label.py`** — a detector per failure mode, run over every reviewed trace. Five
 of the eight modes have a rule that decides them; three do not, and the script says so
 explicitly by returning "cannot decide" rather than guessing. Crucially the rules were
 **validated against the reviewer's existing human coding before being trusted**, and every
@@ -52,7 +52,7 @@ disagreement was investigated rather than explained away. That check is what unc
 `abandons_mid_task` misfiling described in the review summary: eight disagreements, all
 eight a misfiled trace rather than a broken rule.
 
-**`.hw4-logs/shortlist.py`** — candidate generation for the three modes no rule can decide.
+**`analysis/tools/shortlist.py`** — candidate generation for the three modes no rule can decide.
 Each heuristic is grounded in something checkable rather than in wording alone: the store's
 `return_window_days_override` read from the database, the order total against the $100
 threshold from `facts.yaml`, the scenario's declared `user_style`. Candidates are written
