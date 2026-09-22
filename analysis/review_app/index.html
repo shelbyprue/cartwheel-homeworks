@@ -30,8 +30,13 @@
   /* three columns: conversation | expected | your notes */
   main{display:grid;grid-template-columns:minmax(0,1fr) 300px 270px;gap:20px;
        padding:18px 16px 120px;align-items:start}
-  @media (max-width:1200px){main{grid-template-columns:minmax(0,1fr) 260px}
-                            #margin{display:none}}
+  /* Never hide the notes column: they are the point of the tool, and a hidden note
+     reads as a lost note. Narrow the other columns first, then stack. */
+  @media (max-width:1320px){main{grid-template-columns:minmax(0,1fr) 250px 230px;gap:14px}
+                            .note{width:216px}}
+  @media (max-width:1080px){main{grid-template-columns:minmax(0,1fr) 230px}
+                            #expected{grid-column:1/-1;order:3}
+                            #margin{grid-column:2}}
 
   .turn{margin:0 0 26px}
   .turnlabel{font-size:12px;color:var(--muted);text-transform:uppercase;
