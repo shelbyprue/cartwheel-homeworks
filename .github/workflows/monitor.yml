@@ -1,0 +1,47 @@
+name: monitor
+
+on:
+  schedule:
+    - cron: "0 14 * * *"   # daily at 14:00 UTC (9:00 a.m. Central)
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    name: daily failure-mode monitor
+    # Self-hosted: the traces are span files on the machine that runs Cartwheel,
+    # not in a Langfuse that a GitHub-hosted runner could reach.
+    runs-on: self-hosted
+    env:
+      CARTWHEEL_MODEL: ${{ vars.CARTWHEEL_MODEL }}
+      MONITOR_DATA_DIR: ${{ vars.MONITOR_DATA_DIR }}
+      OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL }}
+      # The frozen judge's provider key. No Cartwheel agent key: the job only
+      # reads traces that already exist. No Langfuse keys: Langfuse never ran here
+      # (no Docker), so traces come from span files and scores go to a local store.
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync
+
+      # NOTE ON THIS WORKFLOW IN THIS FORK
+      #
+      # Complete, but disabled on GitHub. The judge's key is an internal
+      # credential that may not go to a third-party CI provider, and making this
+      # laptop a self-hosted runner would let GitHub send it jobs that use that
+      # credential. The same command runs on the laptop through
+      # scripts/run_monitor_local.sh, by hand: macOS blocks launchd from the
+      # Desktop folder. See monitoring/README.md.
+
+      - name: Monitor the previous 24 hours
+        # --yes: there is no one to answer the judge confirmation in CI. An empty
+        # window records a zero count and exits 0 without calling the judge.
+        run: uv run python -m monitoring.run --last-hours 24 --yes
+
+      - name: Upload the monitoring output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: monitor-${{ github.run_id }}
+          path: monitoring/output
+          if-no-files-found: warn

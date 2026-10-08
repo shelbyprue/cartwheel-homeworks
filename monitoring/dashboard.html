@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>irrelevant_policy_detail monitor</title>
+<style>
+.viz-root {
+  color-scheme: light;
+  --surface-1: #fcfcfb; --page: #f9f9f7; --text-primary: #0b0b0b; --text-secondary: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
+  --series-1: #2a78d6; --series-1-wash: #b7d3f6; --series-2: #eb6834; --critical: #d03b3b;
+}
+@media (prefers-color-scheme: dark) {
+  .viz-root {
+    color-scheme: dark;
+    --surface-1: #1a1a19; --page: #0d0d0d; --text-primary: #ffffff; --text-secondary: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --series-1: #3987e5; --series-1-wash: #184f95; --series-2: #d95926;
+  }
+}
+body { margin: 0; }
+.viz-root { background: var(--page); color: var(--text-primary); min-height: 100vh;
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; padding: 24px 32px; }
+h1 { font-size: 20px; margin: 0 0 4px; } h2 { font-size: 15px; margin: 0 0 2px; }
+.sub { color: var(--text-secondary); margin: 0 0 16px; }
+.tiles { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.tile, .card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px; }
+.tile { padding: 12px 16px; min-width: 150px; }
+.tile .label { color: var(--text-secondary); font-size: 12px; }
+.tile .value { font-size: 28px; font-weight: 600; }
+.tile .note { color: var(--muted); font-size: 12px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 16px; }
+.card { padding: 16px; margin-bottom: 16px; }
+.legend { display: flex; gap: 16px; color: var(--text-secondary); font-size: 12px; margin: 6px 0; }
+.key { display: inline-block; width: 14px; height: 2px; vertical-align: middle; margin-right: 6px; }
+.key.ci { width: 3px; height: 12px; }
+.key.th { border-top: 1px dashed var(--muted); height: 0; }
+svg { width: 100%; height: auto; display: block; }
+svg text { font: 11px system-ui, -apple-system, sans-serif; fill: var(--muted); }
+svg text.end { fill: var(--text-secondary); font-size: 12px; }
+.grid { stroke: var(--grid); stroke-width: 1; } .axis { stroke: var(--axis); stroke-width: 1; }
+.threshold { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 3; }
+.ci { stroke: var(--series-1-wash); stroke-width: 4; stroke-linecap: round; }
+.line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.line.s1 { stroke: var(--series-1); } .line.s2 { stroke: var(--series-2); }
+.dot { stroke: var(--surface-1); stroke-width: 2; }
+.dot.s1 { fill: var(--series-1); } .dot.s2 { fill: var(--series-2); }
+.key.s1 { background: var(--series-1); } .key.s2 { background: var(--series-2); }
+.key.ci { background: var(--series-1-wash); }
+.hit { fill: transparent; cursor: default; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { color: var(--text-secondary); font-weight: 600; }
+td { font-variant-numeric: tabular-nums; }
+details p { max-width: 720px; color: var(--text-secondary); margin: 6px 0; }
+summary { cursor: pointer; color: var(--text-secondary); }
+#tip { position: fixed; pointer-events: none; background: var(--surface-1); color: var(--text-primary);
+  border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; font-size: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15); display: none; max-width: 320px; }
+</style></head>
+<body><div class="viz-root">
+<h1>irrelevant_policy_detail</h1>
+<p class="sub">Frozen judge <code>irrelevant_policy_detail-v6</code> · Cartwheel model <code><internal-model></code> ·
+scores read from <code>monitoring/output/scores.jsonl</code> (local stand-in for Langfuse scores).
+1 = failure flagged, 0 = not flagged.</p>
+
+<div class="tiles">
+  <div class="tile"><div class="label">Corrected failure rate, after</div>
+    <div class="value">4.9%</div>
+    <div class="note">95% CI 0% to 65.3%</div></div>
+  <div class="tile"><div class="label">Threshold</div><div class="value">15%</div>
+    <div class="note">below threshold</div></div>
+  <div class="tile"><div class="label">Flagged traces, after</div>
+    <div class="value">3</div>
+    <div class="note">by either score</div></div>
+</div>
+
+<div class="grid2">
+<div class="card"><h2>Random-sample verdict score over time</h2>
+<p class="sub">Share of the 10 random conversations the judge flagged, and the corrected rate it implies.
+Only this sample estimates the failure rate.</p>
+<div class="legend"><span><i class="key s2"></i>random verdict score (raw)</span>
+<span><i class="key s1"></i>corrected failure rate</span><span><i class="key ci"></i>95% interval</span>
+<span><i class="key th"></i>threshold</span></div>
+<svg viewBox="0 0 560 280" role="img" aria-label="Random-sample verdict score and corrected failure rate by period"><line class="axis" x1="48" x2="464" y1="240.0" y2="240.0"/><text class="tick" x="40" y="244.0" text-anchor="end">0%</text><line class="grid" x1="48" x2="464" y1="184.0" y2="184.0"/><text class="tick" x="40" y="188.0" text-anchor="end">25%</text><line class="grid" x1="48" x2="464" y1="128.0" y2="128.0"/><text class="tick" x="40" y="132.0" text-anchor="end">50%</text><line class="grid" x1="48" x2="464" y1="72.0" y2="72.0"/><text class="tick" x="40" y="76.0" text-anchor="end">75%</text><line class="grid" x1="48" x2="464" y1="16.0" y2="16.0"/><text class="tick" x="40" y="20.0" text-anchor="end">100%</text><text class="tick" x="152.0" y="258" text-anchor="middle">before · 2026-09-17</text><text class="tick" x="360.0" y="258" text-anchor="middle">after · 2026-10-06</text><line class="threshold" x1="48" x2="464" y1="206.4" y2="206.4"/><text class="ref" x="470" y="210.4">threshold 15%</text><line class="ci" x1="159.0" x2="159.0" y1="240.0" y2="86.4"/><line class="ci" x1="367.0" x2="367.0" y1="240.0" y2="93.7"/><polyline class="line s2" points="145.0,217.6 353.0,217.6"/><polyline class="line s1" points="159.0,229.0 367.0,229.0"/><g class="pt" data-tip="before: random verdict score 10% (1 of 10 flagged)"><circle class="hit" cx="145.0" cy="217.6" r="14"/><circle class="dot s2" cx="145.0" cy="217.6" r="5"/></g><g class="pt" data-tip="after: random verdict score 10% (1 of 10 flagged)"><circle class="hit" cx="353.0" cy="217.6" r="14"/><circle class="dot s2" cx="353.0" cy="217.6" r="5"/></g><g class="pt" data-tip="before: corrected 4.9%, 95% CI 0% to 68.6%"><circle class="hit" cx="159.0" cy="229.0" r="14"/><circle class="dot s1" cx="159.0" cy="229.0" r="5"/></g><g class="pt" data-tip="after: corrected 4.9%, 95% CI 0% to 65.3%"><circle class="hit" cx="367.0" cy="229.0" r="14"/><circle class="dot s1" cx="367.0" cy="229.0" r="5"/></g><text class="end" x="377.0" y="233.0">4.9%</text></svg></div>
+<div class="card"><h2>Risk verdict score over time</h2>
+<p class="sub">Share of risk-group conversations flagged (policy_lookup, write_action).
+Not a random sample, so it is not a rate estimate.</p>
+<svg viewBox="0 0 560 280" role="img" aria-label="Risk verdict score by period"><line class="axis" x1="48" x2="464" y1="240.0" y2="240.0"/><text class="tick" x="40" y="244.0" text-anchor="end">0%</text><line class="grid" x1="48" x2="464" y1="184.0" y2="184.0"/><text class="tick" x="40" y="188.0" text-anchor="end">25%</text><line class="grid" x1="48" x2="464" y1="128.0" y2="128.0"/><text class="tick" x="40" y="132.0" text-anchor="end">50%</text><line class="grid" x1="48" x2="464" y1="72.0" y2="72.0"/><text class="tick" x="40" y="76.0" text-anchor="end">75%</text><line class="grid" x1="48" x2="464" y1="16.0" y2="16.0"/><text class="tick" x="40" y="20.0" text-anchor="end">100%</text><text class="tick" x="152.0" y="258" text-anchor="middle">before · 2026-09-17</text><text class="tick" x="360.0" y="258" text-anchor="middle">after · 2026-10-06</text><polyline class="line s1" points="152.0,195.2 360.0,184.0"/><g class="pt" data-tip="before: risk verdict score 20% (3 of 15 flagged; policy_lookup 14, write_action 2)"><circle class="hit" cx="152.0" cy="195.2" r="14"/><circle class="dot s1" cx="152.0" cy="195.2" r="5"/></g><text class="end" x="162.0" y="187.2">3 of 15</text><g class="pt" data-tip="after: risk verdict score 25% (3 of 12 flagged; policy_lookup 11, write_action 1)"><circle class="hit" cx="360.0" cy="184.0" r="14"/><circle class="dot s1" cx="360.0" cy="184.0" r="5"/></g><text class="end" x="370.0" y="176.0">3 of 12</text></svg></div>
+</div>
+
+<div class="card"><h2>Traces flagged by either score</h2>
+<table><thead><tr><th>period</th><th>scenario</th><th>trace</th><th>flagged by</th><th>risk groups</th><th>turns</th><th>judge</th></tr></thead><tbody><tr><td>before</td><td>support-0036</td><td><code>fb69c7c4cd5d</code></td><td>random + risk</td><td>policy_lookup</td><td>2</td><td><details><summary>critique</summary><p>The reply explains two rules: (1) cw-returns 30-day return window, (2) cw-refunds $100 human-review threshold. Rule 1 governs: store Trailhead Supply has return_window_days 30, has_override false, platform_default 30, delivered_at 2026-06-05, today 2026-09-17 per escalate context, so window has passed and eligibility is at issue. Rule 2 does not govern: no refund is being queued for approval because the window is closed; the escalate_to_human call summary says &#x27;Needs human decision on eligibility vs policy&#x27; and &#x27;beyond 30 days from delivery per cw-returns&#x27;, not a queue for approval. The amount $171.50 exceeds $100, but the threshold decides nothing when the return is past window and the handoff is for an exception to that window. Explaining the $100 limit describes a path not being taken.</p></details></td></tr><tr><td>before</td><td>support-0050</td><td><code>9cac2c5d8b85</code></td><td>risk</td><td>policy_lookup</td><td>1</td><td><details><summary>critique</summary><p>The reply explains two policy rules. 1) The 30-day return window (cw-returns): This governs. Evidence: get_order shows order 1061 delivered_at 2025-08-14 and refund_eligible false; get_store_info shows Fern &amp; Fog Skincare return_window_days 30, has_override false, platform_default_days 30. The window closing in mid-September 2025 is the reason the refund is declined. 2) The restocking-fee exemption for unopened items (cw-restocking-fees): This does NOT govern. Evidence: get_store_info shows restocking_fee_opt_in false, so Fern &amp; Fog Skincare never charges a restocking fee regardless of opened status. Stating &#x27;unopened items are never charged a restocking fee&#x27; explains a rule/exemption for a fee the store does not charge and implies an opened item might be charged, which is false for this store. Because one explained rule does not bear on this case, the reply fails.</p></details></td></tr><tr><td>before</td><td>support-0206</td><td><code>201a3070a48b</code></td><td>risk</td><td>policy_lookup</td><td>2</td><td><details><summary>critique</summary><p>The reply explains three policy rules:
+1. Saltbox Pantry 7-day return window [store-saltbox-pantry-policy] - GOVERNS. get_store_info shows return_window_days 7, has_override true, and get_order shows delivered_at 2026-06-20 with refund_eligible false. This is the reason the agent declined the refund.
+2. Cartwheel default 30-day window [cw-returns] - GOVERNS as contrast. The instructions explicitly allow mentioning the 30-day default alongside the store&#x27;s own window to explain why the number differs. It bears on the customer&#x27;s refund request.
+3. Restocking fee exemption for unopened items [cw-restocking-fees] - DOES NOT GOVERN. get_store_info shows restocking_fee_opt_in false, meaning Saltbox Pantry never charges a restocking fee regardless of condition. Citing &#x27;unopened items are never charged a restocking fee&#x27; implies a fee could apply if opened, which is false for this store. It does not govern the decline path (which was decided by the 7-day window) and does not bear on the customer&#x27;s question about refund eligibility, only about fees that cannot happen here. This is the prohibited shape of raising a fee the store does not charge.
+Because one explained rule does not govern this case, the reply fails.</p></details></td></tr><tr><td>after</td><td>support-0206</td><td><code>d3cff2c15186</code></td><td>random + risk</td><td>policy_lookup</td><td>2</td><td><details><summary>critique</summary><p>The reply explains two rules. 1) cw-restocking-fees - &#x27;unopened items are never charged a restocking fee&#x27; - does NOT govern. get_store_info shows Saltbox Pantry has restocking_fee_opt_in: false, so no restocking fee could ever apply regardless of opened/unopened status. Citing the unopened exemption implies a fee that cannot happen at this store. 2) store-saltbox-pantry-policy - 7-day return window - DOES govern. get_store_info shows return_window_days: 7, has_override: true, platform_default_days: 30, and get_order/find_order show delivered_at June 20 and refund_eligible: false, so the decline is correctly based on this window. Because one explained rule does not govern this case, the reply fails.</p></details></td></tr><tr><td>after</td><td>support-0037</td><td><code>3025f35ec900</code></td><td>risk</td><td>policy_lookup</td><td>1</td><td><details><summary>critique</summary><p>The reply explains three policy rules: (1) the 30-day return window from [cw-returns], (2) the $100 auto-approval threshold from [cw-refunds], and (3) the 5-10 business day refund timing from [cw-refunds]. Rule 1 governs: get_store_info shows Atlas Stationery has return_window_days 30, has_override false, and get_order shows delivered_at 2026-06-28 vs today 2026-10-06 (~100 days), so the window is the reason for the decision. Rule 2 does NOT govern: the agent escalated because the window appears closed but the user says &#x27;came the other day&#x27; (&#x27;I want a human to double-check this for you rather than say no outright&#x27; and escalate_to_human context &#x27;user says came the other day&#x27;), not because a refund is being queued for approval due to amount. No refund is moving toward approval - the request would be declined for the window - so the $193 total exceeding $100 played no part in the handoff. Explaining the $100 queueing rule describes a path not being taken. Rule 3 is conditional information about refunds generally. Because Rule 2 is explained but does not govern the path actually taken nor the customer&#x27;s window dispute, the reply fails.</p></details></td></tr><tr><td>after</td><td>support-0093</td><td><code>c1d92da6e581</code></td><td>risk</td><td>policy_lookup</td><td>1</td><td><details><summary>critique</summary><p>The reply explains two policy rules. 1) Cartwheel default 30-day return window / Blue Heron Ceramics uses that window: This GOVERNS. Evidence: get_order shows delivered_at 2026-03-31 and refund_eligible false; get_store_info shows return_window_days 30, platform_default_days 30, has_override false. The agent&#x27;s path is decline because outside window, so the window rule is the reason for the outcome and directly answers what to tell the customer. 2) Approved refunds go back to original payment method and arrive in 5 to 10 business days [cw-refunds]: This DOES NOT GOVERN. Evidence: no refund was issued, queued, or approved in the trace; order status is delivered and not refund-eligible. The timing rule therefore decides nothing about the path actually taken (decline due to window) and bears on nothing the store owner asked (what to tell customer about a non-eligible order). It is policy recited after the matter is settled.</p></details></td></tr></tbody></table></div>
+
+<div class="card"><h2>Chart data</h2>
+<table><thead><tr><th>period</th><th>window (UTC)</th><th>random flagged</th><th>random score</th><th>corrected</th><th>95% CI</th><th>risk flagged</th><th>risk score</th></tr></thead><tbody><tr><td>before</td><td>2026-09-17T19:58:18Z to 2026-09-18T00:43:46Z</td><td>1 of 10</td><td>10%</td><td>4.9%</td><td>0% to 68.6%</td><td>3 of 15</td><td>20%</td></tr><tr><td>after</td><td>2026-10-06T18:36:16Z to 2026-10-06T19:15:26Z</td><td>1 of 10</td><td>10%</td><td>4.9%</td><td>0% to 65.3%</td><td>3 of 12</td><td>25%</td></tr></tbody></table></div>
+
+<div class="card"><h2>Monitor runs</h2>
+<table><thead><tr><th>label</th><th>kind</th><th>window (UTC)</th><th>conversations</th><th>judge calls</th><th>run at (UTC)</th></tr></thead><tbody><tr><td>daily-2026-10-02</td><td>scheduled</td><td>2026-10-01T16:17:37Z to 2026-10-02T16:17:37Z</td><td>0</td><td>0</td><td>2026-10-02T16:17:37Z</td></tr><tr><td>before</td><td>period</td><td>2026-09-17T19:58:18Z to 2026-09-18T00:43:46Z</td><td>50</td><td>21</td><td>2026-10-02T18:07:47Z</td></tr><tr><td>after</td><td>period</td><td>2026-10-06T18:36:16Z to 2026-10-06T19:15:26Z</td><td>50</td><td>19</td><td>2026-10-07T00:42:30Z</td></tr><tr><td>daily-2026-10-08</td><td>scheduled</td><td>2026-10-07T19:46:31Z to 2026-10-08T19:46:31Z</td><td>0</td><td>0</td><td>2026-10-08T19:46:31Z</td></tr></tbody></table></div>
+</div>
+<div id="tip"></div>
+<script>
+const tip = document.getElementById("tip");
+document.querySelectorAll(".pt").forEach(g => {
+  g.addEventListener("mousemove", e => {
+    tip.textContent = g.dataset.tip; tip.style.display = "block";
+    tip.style.left = (e.clientX + 14) + "px"; tip.style.top = (e.clientY + 14) + "px";
+  });
+  g.addEventListener("mouseleave", () => { tip.style.display = "none"; });
+});
+</script>
+</body></html>

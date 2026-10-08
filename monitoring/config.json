@@ -1,0 +1,30 @@
+{
+  "judge_id": "irrelevant_policy_detail-v6",
+  "judge_mode": "irrelevant_policy_detail",
+  "model": "<internal-model>",
+  "random_rate": 0.2,
+  "risk_groups": [
+    "policy_lookup",
+    "write_action"
+  ],
+  "threshold": 0.15,
+  "seed": 7,
+  "scenarios": "scenarios/monitoring_scenarios.jsonl",
+  "trace_store": [
+    ".hw3-logs/final-spans.jsonl",
+    ".hw7-logs/after-spans.jsonl"
+  ],
+  "score_sink": "local",
+  "periods": [
+    {
+      "label": "before",
+      "from": "2026-09-17T19:58:18Z",
+      "to": "2026-09-18T00:43:46Z"
+    },
+    {
+      "label": "after",
+      "from": "2026-10-06T18:36:16Z",
+      "to": "2026-10-06T19:15:26Z"
+    }
+  ]
+}

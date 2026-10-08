@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import Any, Sequence
 
+import numpy as np
+
 
 def corrected_mode_prevalence(
     sample_preds: Sequence[int],
@@ -55,5 +57,57 @@ def corrected_mode_prevalence(
             lengths, a value is not 0 or 1, a class is absent, the judge is
             missing a usable correction, or no bootstrap replicate is valid.
     """
-    ### YOUR CODE HERE (hw7)
-    raise NotImplementedError("hw7: implement corrected_mode_prevalence")
+    sample = np.asarray(sample_preds, dtype=int)
+    labels = np.asarray(test_labels, dtype=int)
+    preds = np.asarray(test_preds, dtype=int)
+    if not len(sample) or not len(labels):
+        raise ValueError("sample and held-out inputs must be nonempty")
+    if len(labels) != len(preds):
+        raise ValueError("held-out labels and predictions differ in length")
+    for values in (sample, labels, preds):
+        if not np.isin(values, (0, 1)).all():
+            raise ValueError("every value must be 0 or 1")
+    if labels.min() == labels.max():
+        raise ValueError("held-out labels need both failures and passes")
+
+    def estimate(s: np.ndarray, y: np.ndarray, p: np.ndarray) -> tuple[float, ...] | None:
+        failures, passes = y == 1, y == 0
+        if not failures.any() or not passes.any():
+            return None
+        sensitivity = p[failures].mean()
+        specificity = 1 - p[passes].mean()
+        # Rogan-Gladen divides by Youden's J; a judge no better than chance has none.
+        youden = sensitivity + specificity - 1
+        if youden <= 0:
+            return None
+        raw = s.mean()
+        return raw, (raw + specificity - 1) / youden, sensitivity, specificity
+
+    point = estimate(sample, labels, preds)
+    if point is None:
+        raise ValueError("the judge has no usable correction (sensitivity + specificity <= 1)")
+    raw, corrected, sensitivity, specificity = point
+
+    rng = np.random.default_rng(seed)
+    replicates = []
+    for _ in range(bootstrap_iterations):
+        s = sample[rng.integers(0, len(sample), len(sample))]
+        rows = rng.integers(0, len(labels), len(labels))
+        draw = estimate(s, labels[rows], preds[rows])
+        if draw is not None:
+            replicates.append(min(max(draw[1], 0.0), 1.0))
+    if not replicates:
+        raise ValueError("no bootstrap replicate produced a usable correction")
+    tail = (1 - confidence) / 2 * 100
+    ci_low, ci_high = np.percentile(replicates, [tail, 100 - tail])
+
+    return {
+        "raw": round(float(raw), 4),
+        "corrected": round(float(min(max(corrected, 0.0), 1.0)), 4),
+        "ci_low": round(float(ci_low), 4),
+        "ci_high": round(float(ci_high), 4),
+        "confidence": confidence,
+        "failure_sensitivity": round(float(sensitivity), 4),
+        "pass_specificity": round(float(specificity), 4),
+        "n_sample": int(len(sample)),
+    }
