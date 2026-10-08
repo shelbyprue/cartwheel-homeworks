@@ -19,3 +19,8 @@ Assignments are released incrementally. More will appear here as the course prog
 
 - [Homework 6](module-3/hw6.md): Build continuous integration for the Cartwheel support agent.
 - [Homework 7](module-3/hw7.md): Monitor one failure mode after deployment.
+
+## Module 5
+
+- [Homework 8](module-5/hw8.md): Improve accuracy on one failure mode and compare agent configurations on a Pareto frontier.
+- [Homework 9](module-5/hw9.md): Reduce cost with fewer tokens, prompt caching, and a model cascade, then compare configurations by score and cost.
