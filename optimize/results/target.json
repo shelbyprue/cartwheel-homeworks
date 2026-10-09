@@ -1,0 +1,12 @@
+{
+  "failure_mode": "cites_policy_by_internal_id",
+  "source": "Homework 5 labels, analysis/state/labels/cites_policy_by_internal_id.json (code check over 149 reviewed conversations; present in 96). Sample fraction, not a full-store prevalence: the sample was built by clustering and focused search. Homework 4's first pass found 50 of 102.",
+  "prevalence": 0.644,
+  "requirement": "RESP-1",
+  "example_trace_ids": [
+    "5084d078d38d15cec69dcf31be035226",
+    "ded4bfb5bff91c2465f9c3446ab59c31",
+    "801b46d659e1d471c02af4b5016898d9"
+  ],
+  "why_agent_can_change_it": "The system prompt orders the behaviour: SYSTEM_PROMPT_TEMPLATE in agent/agent.py says 'Cite the policy id (for example cw-returns) for every policy claim', while revised RESP-1 says to name the policy in plain language and never print the identifier. All three replies follow the prompt: support-0013 writes 'our return policy [cw-returns]', support-0019 '30-day return window [store-second-stitch-apparel-policy]', support-0021 'that store window replaces the usual 30-day Cartwheel default [store-juniper-home-goods-policy]'. The identifier comes from get_policy and get_store_info results, so the prompt (or how those tools present the id) is where it can change. Development cases e-008 and e-009 score it."
+}
