@@ -30,6 +30,13 @@ MAX_SEARCH_LIMIT = 25
 DEFAULT_ORDER_LIMIT = 20
 MAX_FIND_ORDER_RESULTS = 5
 
+# Homework 8 tool change: results carry a plain-language name next to the id,
+# so a reply can attribute a policy without printing the id (RESP-1).
+POLICY_ID_NOTE = (
+    "policy_id is an internal key for tool calls only. Never show it to the "
+    "customer; attribute the policy by cite_as."
+)
+
 
 def get_policy(ctx: AuthContext, policy_id: str) -> dict[str, Any]:
     """Fetch one policy doc by its exact id. Risk tier: read.
@@ -62,6 +69,8 @@ def get_policy(ctx: AuthContext, policy_id: str) -> dict[str, Any]:
                 "title": doc.title,
                 "audience": doc.audience,
                 "body": doc.body,
+                "cite_as": doc.title,
+                "note": POLICY_ID_NOTE,
             }
     # Exact match only: a near-miss must not silently return a different doc,
     # because a store override and the platform default disagree on purpose.
@@ -328,6 +337,7 @@ def get_store_info(ctx: AuthContext, store: str) -> dict[str, Any]:
     policy_id = f"store-{matched.slug}-policy"
     if not any(doc.policy_id == policy_id for doc in load_policy_docs()):
         policy_id = None
+    cite_as = next((d.title for d in load_policy_docs() if d.policy_id == policy_id), None)
 
     return {
         "ok": True,
@@ -340,6 +350,8 @@ def get_store_info(ctx: AuthContext, store: str) -> dict[str, Any]:
         "has_override": override is not None,
         "restocking_fee_opt_in": matched.restocking_fee_opt_in,
         "policy_id": policy_id,
+        "cite_as": cite_as,
+        "note": POLICY_ID_NOTE,
     }
 
 
