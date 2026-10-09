@@ -1,0 +1,286 @@
+{
+  "cached_fraction": 0.191325,
+  "cached_input_tokens": 25426,
+  "candidate": "starting",
+  "case_count": 8,
+  "cases": [
+    {
+      "case_id": "e-001",
+      "expected_write": true,
+      "failure_modes": [
+        "refund for #117 is auto_approved (saw [])"
+      ],
+      "latencies_seconds": [
+        45.3682,
+        29.8908,
+        26.7727,
+        188.6928,
+        91.2391
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #117 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll look up your midnight bath salts order to check the refund options.\nFound your order \u2014 now I'll pull up its full details to confirm refund eligibility.\nGot it \u2014 you want a refund for order 117.\n\nI need to check the return window that applies to Fern & Fog before I can move ahead, so let me look that up.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #117 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll look up your order for the midnight bath salts to check its refund eligibility.\nI found your order \u2014 let me pull up the full details to confirm it's eligible for a refund.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #117 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll look up your orders to find the midnight bath salts from Fern & Fog.\nGot it \u2014 you want to return those bath salts.\n\nI need to check the full details for order 117 to confirm it's eligible for a refund, so let me pull that up.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #117 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll look up your midnight bath salts order to check the refund details.\nGot it \u2014 you don't want those bath salts. I'll pull up the full order details and check the return policy for Fern & Fog.\nI found your order and it's marked eligible \u2014 now I'll check Fern & Fog's specific return window to confirm the timing.\nI need to double-check the standard return rules before I process anything, so I'll search the help center for the returns policy.\nI need the full refund policy text to verify the timing rules, so I'll fetch it now.\nYour order looks eligible for a refund, but I want to confirm the standard 30-day return window applies here, so I'll look that up next.\nI still need the general returns policy to confirm how the delivery window is counted, so I'll fetch it next.\nSorry \u2014 I can't refund this one.\n\nYour order #117 for the midnight bath salts from Fern & Fog Skincare was delivered on June 9th, and today is October 9th.\n\nItems can be returned within 30 days of delivery [cw-returns], and Fern & Fog uses that 30-day window too, so this is past the window.\n\nI know that's disappointing. If you want, I can connect you with a human to double-check for any exceptions, or I can help with anything else Cartwheel-related.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #117 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll look up your order for those bath salts to check the refund details.\nFound your order \u2014 now I'll pull up the full details to confirm refund eligibility.\nI found your delivered order \u2014 now I need to check Fern & Fog's specific return window to see if it still applies.\nI need to check Cartwheel's return policy to verify the time limit for your refund.\nThat order is well past the 30-day window, but I'll pull the full return policy to confirm the exact rule before I answer.\nThanks for letting me know \u2014 I checked your order for the midnight bath salts from Fern & Fog Skincare.\n\nThat order #117 was delivered on June 9, and I see you don't want it anymore.\n\nI can't approve a refund for it, because it's past the return window. Under our return policy [cw-returns], items can be returned within 30 days of delivery \u2014 so for a June 9 delivery, the window closed around July 9. Fern & Fog uses that same 30-day window.\n\nI know that's disappointing. If there's anything else I can help with \u2014 like checking another order, finding a different product, or answering a store policy question \u2014 just let me know.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-002",
+      "expected_write": true,
+      "failure_modes": [
+        "refund for #129 is auto_approved (saw [])"
+      ],
+      "latencies_seconds": [
+        51.704,
+        34.6703,
+        32.4302,
+        80.0804,
+        40.7152
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll search your orders to find that serving bowl.\nLet me pull up your recent orders to locate that bowl.\nI don't see it in the quick search, so I'll look up that bowl in the catalog to match it to your orders.\nThanks! I found your Handmade Serving Bowl order \u2014 let me pull up the full details to check the return eligibility.\n\n",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll find your serving bowl order to check the return options.\nThanks for letting me know \u2014 I looked for that bowl but didn't find it right away, so let me pull up your recent orders to locate it.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll look up your order for that bowl and check the store's return policy.\nThanks for letting me know \u2014 sorry that bowl wasn't what you expected. I didn't find it with that search, so let me pull up your recent orders to locate it.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll help with that return \u2014 let me first find your order for the serving bowl to check the details.\nThanks \u2014 I found your order, so now I'll pull up its full details to confirm refund eligibility.\nI found your order is eligible for refund review, but I need to check Blue Heron Ceramics' specific return window since delivery was back in June.\nThat delivery date is past the 30-day window, so I'll look up the official return policy to confirm what applies.\nThe search shows a 30-day return rule, so I'll fetch the complete policy text to verify it.\nThis one is past the normal window so I'm going to bring in a human to review it for an exception.\nThanks for letting me know \u2014 I found your order for the handmade serving bowl from Blue Heron Ceramics (order 129, $20.00, delivered June 8th).\n\nOur standard return window is 30 days from delivery [cw-returns], and Blue Heron Ceramics also uses that 30-day window. Since your request today is past that window, I can't approve the return automatically.\n\nWhat I've done is open a ticket for a human support agent to review whether an exception is possible for \"not what I expected.\" A human will follow up within about 24 hours \u2014 ticket #151.\n\nIs there anything else I can help with on this order in the meantime?",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "Got it \u2014 I'll check your order and the store's return rules for that bowl.\nI didn't find that bowl by name, so I'll pull up your recent orders to locate it.\nThanks for letting me know \u2014 sorry that bowl wasn't what you expected. I couldn't find it by that exact name, so let me dig a little deeper to track down your order and check the return rules for Blue Heron Ceramics.\n\nI'll start by searching for the serving bowl product at Blue Heron Ceramics to identify your order.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-004",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        93.7853
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll find your slim dry bag order to check the refund.\nFound that order \u2014 now I'll pull its full details to verify refund eligibility.\nI see that order isn't marked as refund-eligible, so I'll check Trailhead Supply's return window to explain why.\nThat order looks past its return window, but I'll pull up the returns policy to confirm the exact rule for you.\nGot the policy overview \u2014 I'll fetch the full refund details to confirm the timeline.\nYour order is well outside the normal window, so I'll verify the standard return period to confirm.\nI need to check the exact return window wording, so I'll pull the full return policy next.\n\n",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-006",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        47.657
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I can't update your account email myself, so I'm going to escalate this to a human agent who can help.\nI can't change your email address myself, but I've opened a ticket for you and a human will follow up within about 24 hours to get that updated.\n\nTicket #151 is all set \u2014 thanks for reaching out!",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-007",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        36.2649
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I can't update your card myself, so I'm about to open a ticket for a human to handle this account change.\nI can't update the card on file for you myself \u2014 but I've opened ticket #151 and a human will follow up within about 24 hours.\n\nIn the meantime I can help with orders, returns, or product questions.",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-008",
+      "expected_write": false,
+      "failure_modes": [
+        "reply does not contain 'cw-returns'"
+      ],
+      "latencies_seconds": [
+        22.1014
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "reply does not contain 'cw-returns'"
+          ],
+          "final_reply": "I'll look up Cartwheel's return window so I can give you the accurate timeframe.\nI found a 30-day reference \u2014 now I'll fetch the full details to confirm the exact terms.\nYou have **30 days from delivery** to return something you bought on Cartwheel \u2014 not from the date you ordered it.\n\nJust a heads-up: individual stores can set their own return window, so it's worth checking the store's own policy page too.\n\nPolicy: **cw-returns**\n\nWant me to check the return window for a specific store or order?",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-009",
+      "expected_write": false,
+      "failure_modes": [
+        "reply does not contain 'store-northwind-books-policy'"
+      ],
+      "latencies_seconds": [
+        52.5631
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "reply does not contain 'store-northwind-books-policy'"
+          ],
+          "final_reply": "I'll look up Northwind Books' return window, since the store's own policy determines what applies.\nI'll fetch the full text of that Northwind Books policy to confirm the return details.\nThe Walnut Poetry Collection from Northwind Books has a **45-day** return window from delivery.\n\nNorthwind Books uses its own 45-day window instead of the Cartwheel default of 30 days (store-northwind-books-policy).\n\nWant help starting a return for it?",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-012",
+      "expected_write": false,
+      "failure_modes": [
+        "tool get_order called"
+      ],
+      "latencies_seconds": [
+        44.4562
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "tool get_order called"
+          ],
+          "final_reply": "I'll help with that return \u2014 let me first find your order for the rustic water bottle.\nGot it \u2014 let me pull up the details for that return.\n\nI need to check your specific order's eligibility first, so I'm going to look up order 200 now and why I'm checking it for refund status.",
+          "judge_reasons": {
+            "irrelevant_policy_detail": "{\n  \"critique\": \"The trace contains no final reply explaining any policy rules. The assistant messages only state intent to find the order and check eligibility ('I'll help with that return', 'look up order 200... for refund status'). No rules are cited: no $100 auto-approval threshold, no restocking-fee rule, no return-window rule (30-day default or store override). Since no policy rule is explained, there is no rule that fails to govern the case. The tool result shows order 200 total $267.75 and refund_eligible true, but the assistant has not yet taken a refund path or explained any rule governing it.\",\n  \"result\": \"Pass\"\n}"
+          },
+          "passed": false
+        }
+      ],
+      "runs": 1
+    }
+  ],
+  "cost_per_100_conversations_usd": 1.062894,
+  "cost_usd": 0.170063,
+  "created_at": "2026-10-09T15:25:02.488950+00:00",
+  "evaluated_case_runs": 16,
+  "git_commit": "5a11b939133a6725e515d811f8c3aad974752b1b",
+  "input_tokens": 132894,
+  "median_latency_seconds": 44.9122,
+  "model": "muse-1-3",
+  "output_tokens": 37169,
+  "price_date": "2026-10-09",
+  "prompt_sha256_12": "961cb3c26346",
+  "schema_version": 1,
+  "score": 0.375,
+  "split": "development",
+  "test_plan_sha256": null,
+  "write_pass_5": 0
+}
