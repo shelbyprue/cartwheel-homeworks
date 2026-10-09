@@ -41,3 +41,5 @@ scenarios/demo_pilot_gt.json
 .hw5-logs/
 .hw7-logs/
 monitoring/output/
+.hw8-logs/
+.hw8-progress.md

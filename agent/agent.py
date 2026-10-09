@@ -113,6 +113,20 @@ LITELLM_COURSE_MODELS = {
 }
 
 
+def model_aliases() -> dict[str, str]:
+    """Model nicknames from CARTWHEEL_MODEL_ALIASES in .env.
+
+    The format is "nickname=model-id,nickname=model-id". This fork keeps internal
+    model ids out of committed files, so Homework 8's config and results name the
+    nicknames and only .env holds the real ids.
+    """
+    import os
+
+    pairs = (item.split("=", 1) for item in
+             os.environ.get("CARTWHEEL_MODEL_ALIASES", "").split(",") if "=" in item)
+    return {nick.strip(): model.strip() for nick, model in pairs}
+
+
 def resolve_model(name: str | None) -> Any:
     """Turn a course model name into what Agent(model=...) expects.
 
@@ -124,6 +138,7 @@ def resolve_model(name: str | None) -> Any:
     import os
 
     name = name or os.environ.get("CARTWHEEL_MODEL") or DEFAULT_MODEL
+    name = model_aliases().get(name, name)
     if name.startswith("gpt-"):
         return name
     litellm_id = LITELLM_COURSE_MODELS.get(name, name)

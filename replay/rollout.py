@@ -20,6 +20,9 @@ the end-to-end tests (tests/eval/test_e2e.py) and the replay harness
   - :func:`judge_reply` runs one frozen Module 2 judge on a reply (a live
     model call to the judge's pinned model; only used when API keys are
     present).
+  - :func:`judge_transcript` runs the frozen judge on the whole transcript
+    the way Homework 5 validated it. ``replay.__main__`` scores with this one
+    in this fork; see analysis/report/hw8-judge-substitution.md.
 
 Nothing here retries a verdict. A model call that fails with a transport
 error raises, and the caller decides what counts as an infrastructure
@@ -439,3 +442,104 @@ def judge_reply_with_text(judge: dict[str, Any], reply: str, docs: str) -> tuple
         return match.group(1), text
     lowered = text.lower()
     return ("fail" if "fail" in lowered else "pass"), text
+
+
+# ---------------------------------------------------------------------------
+# The frozen judge, called the way Homework 5 validated it (this fork)
+# ---------------------------------------------------------------------------
+#
+# judge_reply_with_text above does not reproduce this fork's Homework 5 judge:
+# it sends the reply and retrieved docs instead of the trace, sets no token
+# budget (this endpoint returns empty content on a small budget, which the
+# fallback reads as "pass"), and parses `"answer"` where this judge writes
+# `"result": "Pass" | "Fail"`. judge_transcript sends the request Homework 5
+# validated through analysis/tools/muse_classify, with the trace text in the
+# Homework 5 layout, through Responses API background mode so the corporate
+# proxy's ~60 s idle cutoff cannot drop the call.
+
+JUDGE_POLL_SECONDS = 10
+# A full answer takes under 3 minutes; past this, cancel and resubmit once.
+JUDGE_MAX_WAIT_SECONDS = 15 * 60
+
+
+class JudgeUnavailableError(RuntimeError):
+    """The judge endpoint produced no verdict. The message carries "service
+    unavailable" so replay.__main__ classifies it as infrastructure."""
+
+
+def hw5_trace_text(transcript: dict[str, Any]) -> str:
+    """The trace text in the layout Homework 5 judged (muse_classify._trace_text over
+    the exported spans): per turn the user message, then the reply, then each tool
+    call with the model's compact arguments and the tool's JSON result. Rebuilding
+    the 127 single-turn Homework 5 traces this way reproduces their text byte for
+    byte (.hw8-logs/judge_check.py)."""
+    lines: list[str] = []
+    for turn in transcript["turns"]:
+        lines.append(f"[user] {turn['user']}")
+        lines.append(f"[assistant] {turn['reply']}")
+        for call in turn.get("tool_calls") or []:
+            result = call.get("result")
+            if not isinstance(result, str):
+                result = json.dumps(result)
+            lines.append(f"[tool call] {call['name']} "
+                         f"{json.dumps(call.get('args'), separators=(',', ':'))}")
+            lines.append(f"[tool result] {call['name']}: {result}")
+    return "\n".join(lines)
+
+
+def judge_transcript(
+    judge: dict[str, Any], transcript: dict[str, Any], client: Any = None
+) -> tuple[str, str]:
+    """Run the frozen judge on one transcript. Returns ("pass" | "fail", text)."""
+    import time
+
+    from analysis.tools.muse_classify import MAX_TOKENS, RETRY_TOKENS, _parse
+
+    if client is None:
+        from openai import OpenAI
+
+        client = OpenAI(timeout=45, max_retries=5)
+    model = judge["model"]
+    model = model.split("/", 1)[1] if model.startswith("openai/") else model
+
+    def submit(budget: int) -> Any:
+        return client.responses.create(
+            model=model,
+            input=[
+                {"role": "system", "content": judge["prompt_text"]},
+                {"role": "user", "content":
+                    "Evaluate this trace and reply with the JSON object described above.\n\n"
+                    "TRACE\n" + hw5_trace_text(transcript)},
+            ],
+            temperature=0,
+            max_output_tokens=budget,
+            background=True,
+        )
+
+    budget, attempt = MAX_TOKENS, 1
+    job, submitted = submit(budget), time.time()
+    while True:
+        time.sleep(JUDGE_POLL_SECONDS)
+        job = client.responses.retrieve(job.id)
+        if job.status in ("queued", "in_progress"):
+            if time.time() - submitted > JUDGE_MAX_WAIT_SECONDS:
+                client.responses.cancel(job.id)
+                if attempt >= 2:
+                    raise JudgeUnavailableError(
+                        f"judge job stuck {job.status} twice (service unavailable)")
+                attempt += 1
+                job, submitted = submit(budget), time.time()
+            continue
+        content = (job.output_text or "") if job.status == "completed" else ""
+        if content.strip():
+            label, _critique = _parse(content)  # 1 = Pass, 0 = Fail
+            return ("pass" if label == 1 else "fail"), content
+        if job.status == "completed" and budget == MAX_TOKENS:
+            # Same rule as muse_classify: empty content means the reasoning used
+            # the whole budget, so try once more with more headroom.
+            budget = RETRY_TOKENS
+            job, submitted = submit(budget), time.time()
+            continue
+        raise JudgeUnavailableError(
+            f"judge job {job.status}: {job.error or job.incomplete_details} "
+            "(service unavailable)")
