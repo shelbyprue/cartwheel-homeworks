@@ -197,10 +197,9 @@ def search_help_center_logic(ctx: AuthContext, query: str, k: int = 3) -> dict[s
                 "title": doc.title,
                 "snippet": doc.body[:SNIPPET_CHARS],
                 "score": round(float(score), 3),
-                "cite_as": doc.title,
             }
         )
-    return {"ok": True, "results": results, "note": hw_tools.POLICY_ID_NOTE}
+    return {"ok": True, "results": results}
 
 
 def get_order_logic(ctx: AuthContext, order_id: int) -> dict[str, Any]:
