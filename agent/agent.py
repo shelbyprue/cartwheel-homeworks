@@ -18,15 +18,16 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from typing import Any
 
-from agents import Agent, ModelSettings, RunContextWrapper, function_tool
+from agents import Agent, Model, ModelSettings, RunContextWrapper, function_tool
 
 from agent import db
 from agent import tools as hw_tools
 from agent.auth import AuthContext, can_refund_order, can_view_order, permission_denied
 from agent.config import load_facts
-from agent.helpcenter import get_index
+from agent.helpcenter import get_index, load_policy_docs
 from agent.killswitch import kill_switch
 from observability.instrument import configure_model_tracing, record_tool_result
 from seed.eligibility import refund_needs_approval
@@ -174,6 +175,35 @@ def model_settings_for(model: Any) -> ModelSettings:
             include_usage=True,
         )
     return ModelSettings()
+
+
+def replace_policy_ids(text: str) -> str:
+    """Swap every whole policy id in `text` for that policy's title, longest
+    id first so one id never matches inside another."""
+    for doc in sorted(load_policy_docs(), key=lambda d: -len(d.policy_id)):
+        text = re.sub(rf"(?<![\w-]){re.escape(doc.policy_id)}(?![\w-])", doc.title, text)
+    return text
+
+
+class PolicyIdProofreader(Model):
+    """Homework 8 harness change (RESP-1): swap any policy id in the model's
+    text for the policy's title before the reply leaves the agent. Tool calls
+    pass through untouched, so the id stays recorded on the trace."""
+
+    def __init__(self, inner: Model) -> None:
+        self.inner = inner
+
+    async def get_response(self, *args: Any, **kwargs: Any) -> Any:
+        response = await self.inner.get_response(*args, **kwargs)
+        for item in response.output:
+            if getattr(item, "type", None) == "message":
+                for part in item.content:
+                    if getattr(part, "type", None) == "output_text":
+                        part.text = replace_policy_ids(part.text)
+        return response
+
+    def stream_response(self, *args: Any, **kwargs: Any) -> Any:
+        return self.inner.stream_response(*args, **kwargs)
 
 
 # ---------------------------------------------------------------------------
@@ -540,12 +570,14 @@ def build_agent(
     """
     resolved = resolve_model(model)
     configure_model_tracing(openai_model=isinstance(resolved, str))
+    # Plain OpenAI model names stay strings for the SDK's own provider.
+    wrapped = resolved if isinstance(resolved, str) else PolicyIdProofreader(resolved)
     if not defenses:
         return Agent[AuthContext](
             name="cartwheel-support",
             instructions=render_system_prompt(ctx, prompt_template),
             tools=TOOLS_BY_ROLE[ctx.role],
-            model=resolved,
+            model=wrapped,
             model_settings=model_settings_for(resolved),
         )
 
@@ -556,7 +588,7 @@ def build_agent(
         name="cartwheel-support",
         instructions=render_system_prompt(ctx, prompt_template),
         tools=_tools_with_defenses(ctx.role),
-        model=resolved,
+        model=wrapped,
         model_settings=model_settings_for(resolved),
         input_guardrails=[injection_input_guardrail],
         output_guardrails=[link_output_guardrail],
