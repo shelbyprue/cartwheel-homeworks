@@ -112,3 +112,17 @@ current commit.
 
 **Optional Harbor exercise.** Not attempted: Harbor needs Docker, which cannot be installed
 on this machine (see `hw6-ci-substitution.md`).
+
+## Known issue: a CI test broken by the harness change
+
+Pushing Homework 8 to the fork turned the `offline checks` job red (ad3fab8; the Homework 7
+push, fc7d028, passed). Four cases of `tests/test_cli.py::test_non_openai_direct_run_does_not_export`
+fail from the harness change (2f82a4c) onward and pass at the commit before it. The test
+checks that `build_agent` returns a plain `LitellmModel` for non-OpenAI models, and the
+harness change wraps that model in `PolicyIdProofreader`. Only `test_agent_tools` and
+`test_hw_holes` were run after the change, so this was found after the test batch.
+
+No Homework 8 number is affected: no agent, runner or scoring code checks the model's
+type, only this test does. The final version stays as it was saved, because the handout
+does not allow changing it after the test results. The fix, keeping the proofreading
+while `build_agent` still returns a `LitellmModel`, will be the first change in Homework 9.
