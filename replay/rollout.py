@@ -540,6 +540,12 @@ def judge_transcript(
             budget = RETRY_TOKENS
             job, submitted = submit(budget), time.time()
             continue
+        if job.status == "failed" and attempt < 2:
+            # A server-side failure ("The model failed to generate a response") is
+            # transient; resubmit once, as for a stuck job, before giving up.
+            attempt += 1
+            job, submitted = submit(budget), time.time()
+            continue
         raise JudgeUnavailableError(
             f"judge job {job.status}: {job.error or job.incomplete_details} "
             "(service unavailable)")
