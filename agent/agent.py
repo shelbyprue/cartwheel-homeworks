@@ -16,12 +16,13 @@ The mapping from concept to SDK primitive, stated once: the loop is
 
 from __future__ import annotations
 
+import functools
 import hashlib
 import json
 import re
 from typing import Any
 
-from agents import Agent, Model, ModelSettings, RunContextWrapper, function_tool
+from agents import Agent, ModelSettings, RunContextWrapper, function_tool
 
 from agent import db
 from agent import tools as hw_tools
@@ -149,9 +150,7 @@ def resolve_model(name: str | None) -> Any:
     if name.startswith("gpt-"):
         return name
     litellm_id = LITELLM_COURSE_MODELS.get(name, name)
-    from agents.extensions.models.litellm_model import LitellmModel
-
-    return LitellmModel(model=litellm_id)
+    return proofreading_model_class()(model=litellm_id)
 
 
 def model_settings_for(model: Any) -> ModelSettings:
@@ -191,25 +190,31 @@ def replace_policy_ids(text: str) -> str:
     return text
 
 
-class PolicyIdProofreader(Model):
-    """Homework 8 harness change (RESP-1): swap any policy id in the model's
-    text for the policy's title before the reply leaves the agent. Tool calls
-    pass through untouched, so the id stays recorded on the trace."""
+@functools.cache
+def proofreading_model_class() -> type:
+    """The LiteLLM model class with the policy-id proofreader built in.
 
-    def __init__(self, inner: Model) -> None:
-        self.inner = inner
+    Homework 8 wrapped the model instead, which hid the LitellmModel from
+    tests/test_cli.py; Homework 9 makes the proofreader a subclass. Built on
+    first use so LiteLLM is still imported lazily, as in resolve_model.
+    """
+    from agents.extensions.models.litellm_model import LitellmModel
 
-    async def get_response(self, *args: Any, **kwargs: Any) -> Any:
-        response = await self.inner.get_response(*args, **kwargs)
-        for item in response.output:
-            if getattr(item, "type", None) == "message":
-                for part in item.content:
-                    if getattr(part, "type", None) == "output_text":
-                        part.text = replace_policy_ids(part.text)
-        return response
+    class PolicyIdProofreader(LitellmModel):
+        """Homework 8 harness change (RESP-1): swap any policy id in the model's
+        text for the policy's title before the reply leaves the agent. Tool calls
+        pass through untouched, so the id stays recorded on the trace."""
 
-    def stream_response(self, *args: Any, **kwargs: Any) -> Any:
-        return self.inner.stream_response(*args, **kwargs)
+        async def get_response(self, *args: Any, **kwargs: Any) -> Any:
+            response = await super().get_response(*args, **kwargs)
+            for item in response.output:
+                if getattr(item, "type", None) == "message":
+                    for part in item.content:
+                        if getattr(part, "type", None) == "output_text":
+                            part.text = replace_policy_ids(part.text)
+            return response
+
+    return PolicyIdProofreader
 
 
 # ---------------------------------------------------------------------------
@@ -576,14 +581,12 @@ def build_agent(
     """
     resolved = resolve_model(model)
     configure_model_tracing(openai_model=isinstance(resolved, str))
-    # Plain OpenAI model names stay strings for the SDK's own provider.
-    wrapped = resolved if isinstance(resolved, str) else PolicyIdProofreader(resolved)
     if not defenses:
         return Agent[AuthContext](
             name="cartwheel-support",
             instructions=render_system_prompt(ctx, prompt_template),
             tools=TOOLS_BY_ROLE[ctx.role],
-            model=wrapped,
+            model=resolved,
             model_settings=model_settings_for(resolved),
         )
 
@@ -594,7 +597,7 @@ def build_agent(
         name="cartwheel-support",
         instructions=render_system_prompt(ctx, prompt_template),
         tools=_tools_with_defenses(ctx.role),
-        model=wrapped,
+        model=resolved,
         model_settings=model_settings_for(resolved),
         input_guardrails=[injection_input_guardrail],
         output_guardrails=[link_output_guardrail],
