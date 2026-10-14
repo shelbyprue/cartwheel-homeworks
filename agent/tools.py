@@ -204,7 +204,12 @@ def list_my_orders(ctx: AuthContext) -> dict[str, Any]:
                     "look up a specific order with get_order instead"
                 ),
             }
-    payload = [order.to_public_dict() for order in orders]
+    # Homework 9 Part B: drop quantity and shipped_at, which the agent rarely uses,
+    # to shrink the largest tool result. get_order still returns every field.
+    payload = [
+        {k: v for k, v in order.to_public_dict().items() if k not in ("quantity", "shipped_at")}
+        for order in orders
+    ]
     return {"ok": True, "orders": payload, "count": len(payload)}
 
 
