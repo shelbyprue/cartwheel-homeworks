@@ -2,6 +2,9 @@
 
 The Cartwheel repository grows across the course, so every student assignment is stored here beside the code used to complete it. Begin with Module 1, and keep the files produced by each assignment because later modules use the same support agent and evaluation records.
 
+> [!IMPORTANT]
+> Run the Cartwheel agent on a small model, such as `gpt-4o-mini` (the default), `gpt-5-nano`, or `claude-haiku-4-5`. Frontier models such as `gpt-5.5` or `claude-opus-4-6` rarely make mistakes in this synthetic world, and every module depends on finding and studying agent failures. Judge models are chosen separately in each assignment.
+
 Assignments are released incrementally. More will appear here as the course progresses.
 
 ## Module 1
