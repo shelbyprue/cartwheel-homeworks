@@ -1,0 +1,156 @@
+{
+  "cached_fraction": 0.122607,
+  "cached_input_tokens": 11316,
+  "candidate": "starting-version-model-3",
+  "case_count": 4,
+  "cases": [
+    {
+      "case_id": "e-003",
+      "expected_write": true,
+      "failure_modes": [
+        "refund for #161 is auto_approved (saw [])"
+      ],
+      "latencies_seconds": [
+        33.6608,
+        125.6035,
+        63.6966,
+        24.3768,
+        16.7788
+      ],
+      "pass_rate": 0.2,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #161 is auto_approved (saw [])"
+          ],
+          "final_reply": "Got it \u2014 you want a refund for that socket set. I'll look up your order to see what we can do.\nI found your order \u2014 now I'll pull up its full details to check refund eligibility.\nOrder 161 is eligible \u2014 now I'll verify Copperline Tools' return terms before finalizing anything.\nI found your order \u2014 order 161 for the socket set from Copperline Tools, delivered June 1st for $69.75.\n\nI need to check the return policy details to see if it's still within the window, since it was delivered a while ago.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll look up your socket set order to check your refund options.\nThat specific search didn't find the order, so I'll pull up your recent orders.\nI see your recent orders but need product details, so I'll search the catalog for that socket set.\nI found your Everyday Socket Set order, so I'll pull its full details to verify refund eligibility.\nFound your Everyday Socket Set order from Copperline Tools \u2014 now I'll check that store's return window to confirm it still applies.\nI need to verify the official return rules before approving anything, so I'll look up the return policy next.\nI found the return policy references, so I'll fetch the full text to confirm the exact requirements.\nYour order shows as refund-eligible, but I want to double-check the refund timing rules before we proceed, so I'll pull the full refund policy.\nYour order is marked refund-eligible, so I'll issue the refund for $69.75 now.\nGot it \u2014 I found your Everyday Socket Set from Copperline Tools (order 161, $69.75, delivered June 1st).\n\nI've issued your refund for $69.75:\n- **Status:** approved automatically\n- It will go back to your original payment method in 5 to 10 business days [cw-refunds]\n\nOur return window is 30 days from delivery [cw-returns], and your order showed as refund-eligible, so you're all set.\n\nLet me know if there's anything else I can help with!",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #161 is auto_approved (saw [])"
+          ],
+          "final_reply": "Got it \u2014 I'll look up that socket set in your orders to get your refund started.\nI found your order \u2014 now I'll pull up its full details to check if it's eligible for a refund.\nI see your Copperline order is delivered and eligible \u2014 now I'll check their specific return window and our return policy to confirm your refund.\nThat order is past the usual delivery date, so I'll check the returns policy to verify the time limit before issuing your refund.\nI found your Copperline Tools order for the socket set \u2014 let me double-check the exact return window rules before we go further.\n\nI'll pull the full return policy text to confirm the time limit and condition rules.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #161 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll look up your order for that socket set to check your refund options.\nFound a match for that socket set \u2014 now I'll pull up the full order details to confirm refund eligibility.\nGot it \u2014 you want a refund for the everyday socket set from Copperline Tools, order 161 for $69.75 delivered June 1st.\n\nI'll check Copperline Tools' specific return window to see what applies to your order.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #161 is auto_approved (saw [])"
+          ],
+          "final_reply": "Got it \u2014 I'll track down that socket set order to sort out your refund.\nGot it \u2014 you want your money back for that socket set.\n\nI'll look up your order details to check if it's eligible for a refund.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-005",
+      "expected_write": false,
+      "failure_modes": [
+        "tool get_order called"
+      ],
+      "latencies_seconds": [
+        24.7246
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "tool get_order called"
+          ],
+          "final_reply": "I'll look up those items in your order history to check if they're still eligible for return.\nFound your power bank order \u2014 now I'll look up the pocket arcade one and check the return rules.\nGot it \u2014 let me check the details on that power bank order and what our return rules say about older orders.\n\nI'll check the full details of your power bank order to confirm its return status.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-010",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        134.6751
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll look up your Midnight crewneck order to check its return options.\nI found your order \u2014 now I'll pull up its full details to confirm refund eligibility.\nYour order is delivered and marked refund-eligible, so now I'll check Second Stitch Apparel's specific return window to see if you can still return it.\nThat order is well past the 30-day window, but I'll pull the store's official policy to confirm how returns and refund payments work.\nI need the official refund payment details, so I'll search the help center for how refunds are paid back.\nI have the store's 30-day rule \u2014 now I'll fetch the full refund policy to confirm exactly how refunds are paid back.\nI found your order for the Midnight crewneck \u2014 since any refund over $100 needs a human to review it, I'm going to escalate this for you next to get that started.\n\n",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-011",
+      "expected_write": false,
+      "failure_modes": [
+        "tool get_order called"
+      ],
+      "latencies_seconds": [
+        25.7788
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "tool get_order called"
+          ],
+          "final_reply": "I'll look up your order for the walnut poetry collection to check its return eligibility.\nThanks for letting me know \u2014 I found your order for that collection, so let me double-check the details and the return rules for Northwind Books.\n\nI'll pull up your exact order first to confirm its status and refund eligibility.",
+          "judge_reasons": {
+            "irrelevant_policy_detail": "{\n  \"critique\": \"The trace contains no final reply that explains any policy rule. The assistant's only messages are acknowledgments ('I'll look up your order...', 'Thanks for letting me know \\u2014 I found your order...'). No rule is cited: no $100 automatic-approval threshold, no restocking-fee rule, no return-window rule (30-day default or store override). The tool result shows order 186, total $231.50, refund_eligible true, but no refund has been issued, queued, or declined yet, and no store policy lookup is present. Since zero policy rules are explained, there is zero rule that fails to govern this case.\",\n  \"result\": \"Pass\"\n}"
+          },
+          "passed": false
+        }
+      ],
+      "runs": 1
+    }
+  ],
+  "cost_per_100_conversations_usd": 1.452462,
+  "cost_usd": 0.116197,
+  "created_at": "2026-10-14T02:39:18.332055+00:00",
+  "evaluated_case_runs": 8,
+  "git_commit": "5a11b939133a6725e515d811f8c3aad974752b1b",
+  "input_tokens": 92295,
+  "median_latency_seconds": 29.7198,
+  "model": "muse-1-3",
+  "output_tokens": 23902,
+  "price_date": "2026-10-09",
+  "prompt_sha256_12": "961cb3c26346",
+  "schema_version": 1,
+  "score": 0.3,
+  "split": "test",
+  "test_plan_sha256": "37346b7db06598dcfd12e68b864f48142240158bd4117d6d0cbfed0f5015f9aa",
+  "write_pass_5": 0
+}

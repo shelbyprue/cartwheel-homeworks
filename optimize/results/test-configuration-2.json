@@ -1,0 +1,158 @@
+{
+  "cached_fraction": 0.497475,
+  "cached_input_tokens": 16648,
+  "candidate": "starting-version-model-2",
+  "case_count": 4,
+  "cases": [
+    {
+      "case_id": "e-003",
+      "expected_write": true,
+      "failure_modes": [
+        "refund for #161 is auto_approved (saw [])"
+      ],
+      "latencies_seconds": [
+        13.016,
+        31.5879,
+        50.5924,
+        80.3993,
+        193.553
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #161 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll track down your Copperline Tools socket set order to help with your refund.\nThat Everyday Socket Set shows delivered June 1 -- I'll pull the full order and store policy to check your refund options.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #161 is auto_approved (saw [])"
+          ],
+          "final_reply": "I've opened a ticket for you \u2014 a human will follow up within 24 hours (ticket #151). While you wait, I can check your order and our return policy to see what's eligible for a refund right away.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #161 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll track down your Copperline Tools order and check the return eligibility.\nFound your Copperline Tools order for the Everyday Socket Set \u2014 let me pull the full details to confirm refund eligibility.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #161 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll locate your Copperline Tools socket set order to get your refund started.\nI found your Copperline Tools order for the Everyday Socket Set (order 161, delivered June 1). Before I process your refund, I need to verify the details and the return window that applies to make sure you're eligible.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #161 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll track down your Copperline socket set order to help with the refund.\nI found a few recent delivered orders \u2014 let me zero in on the Copperline socket set to check your refund options.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-005",
+      "expected_write": false,
+      "failure_modes": [
+        "tool get_order called"
+      ],
+      "latencies_seconds": [
+        159.0345
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "tool get_order called"
+          ],
+          "final_reply": "Thanks for reaching out! I understand you'd like to return your Signature Power Bank and Pocket Arcade and that it's been a while since you received them.\n\nI've opened a ticket for our human support team to review your return request \u2014 a human agent will follow up within 24 hours (ticket #151).\n\nIf you'd like, I can also look up your recent orders to check the specific return windows and refund eligibility \u2014 just let me know your order number or if you'd like me to pull up your order history.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-010",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        40.0319
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll look up Second Stitch Apparel's return and refund policies for your Midnight crewneck.\nFound your Midnight crewneck order \u2014 let me pull the full details on returns and how refunds are paid.",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-011",
+      "expected_write": false,
+      "failure_modes": [
+        "tool get_order called"
+      ],
+      "latencies_seconds": [
+        11.1574
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "tool get_order called"
+          ],
+          "final_reply": "I'll track down your Northwind Books order to arrange that return.\nFound your order for the walnut poetry collection \u2014 I'll pull the full details to confirm it's eligible for return.",
+          "judge_reasons": {
+            "irrelevant_policy_detail": "{\n  \"critique\": \"The reply explains no policy rules. It contains only a status update about finding the order (order_id 186, $231.50) and intent to check eligibility. It does not cite the $100 auto-approval threshold, any restocking-fee rule, or any return-window rule (Cartwheel default or store override). Since no rule is explained, there is no rule that fails TEST 1 (governing the path taken) or TEST 2 (bearing on what the customer asked).\",\n  \"result\": \"Pass\"\n}"
+          },
+          "passed": false
+        }
+      ],
+      "runs": 1
+    }
+  ],
+  "cost_per_100_conversations_usd": 0.469225,
+  "cost_usd": 0.037538,
+  "created_at": "2026-10-14T02:30:29.146868+00:00",
+  "evaluated_case_runs": 8,
+  "git_commit": "5a11b939133a6725e515d811f8c3aad974752b1b",
+  "input_tokens": 33465,
+  "median_latency_seconds": 45.3122,
+  "model": "muse-1-2",
+  "output_tokens": 4073,
+  "price_date": "2026-10-09",
+  "prompt_sha256_12": "961cb3c26346",
+  "schema_version": 1,
+  "score": 0.25,
+  "split": "test",
+  "test_plan_sha256": "37346b7db06598dcfd12e68b864f48142240158bd4117d6d0cbfed0f5015f9aa",
+  "write_pass_5": 0
+}

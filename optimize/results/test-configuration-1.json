@@ -1,0 +1,162 @@
+{
+  "cached_fraction": 0.860684,
+  "cached_input_tokens": 21252,
+  "candidate": "starting-version-model-1",
+  "case_count": 4,
+  "cases": [
+    {
+      "case_id": "e-003",
+      "expected_write": true,
+      "failure_modes": [
+        "refund for #161 is auto_approved (saw [])"
+      ],
+      "latencies_seconds": [
+        89.1293,
+        11.4944,
+        4.694,
+        141.4154,
+        64.9592
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #161 is auto_approved (saw [])"
+          ],
+          "final_reply": "That socket set isn't working out, so you want a refund. I'll look up your Copperline Tools order and the relevant return policy to check your options.\nFound your Copperline Tools order for the Everyday Socket Set:\n\n- Order #161, delivered June 1, total $69.75\n- Return eligible and within the 30-day window for Copperline Tools\n\nBefore I process the refund, can you tell me the reason for the return? For example, wrong size, defective, no longer needed?",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #161 is auto_approved (saw [])"
+          ],
+          "final_reply": "Got it \u2014 you want a refund for that Everyday Socket Set from Copperline. Let me pull up your order and check the return policy.I'll locate your order for that socket set first.\nI didn't find it with that exact phrase \u2014 let me check your recent orders to locate the socket set, and pull up Copperline's return rules.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #161 is auto_approved (saw [])"
+          ],
+          "final_reply": "I can help you with that return for the Everyday Socket Set from Copperline Tools.\n\nTo check your options, I'll look up your order and the store's return policy - could you share your order ID if you have it handy?",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #161 is auto_approved (saw [])"
+          ],
+          "final_reply": "I can help with that refund. I'll pull up your socket set order to check its eligibility.\nGot it \u2014 I found your order for the everyday socket set from Copperline Tools.\n\nOrder **#161** shows delivered on June 1 for $69.75 and it's marked as refund eligible. Let me check the exact return window for that store and the return policy that applies.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #161 is auto_approved (saw [])"
+          ],
+          "final_reply": "I can help you get your money back for that socket set.\n\nTo check the return eligibility and store policy, I need to find your order first \u2014 let me look that up for you.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-005",
+      "expected_write": false,
+      "failure_modes": [
+        "tool get_order called"
+      ],
+      "latencies_seconds": [
+        68.9512
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "tool get_order called"
+          ],
+          "final_reply": "Got it \u2014 you want to return the signature power bank and pocket arcade. I'll check your orders to see what can be returned.\nI found your signature power bank order \u2014 order #3 delivered back on June 30th, 2025. Let me pull up the full details and check what return options we have for an item from that long ago, and also look for your pocket arcade order.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-010",
+      "expected_write": false,
+      "failure_modes": [
+        "reply does not contain 'cw-refunds'"
+      ],
+      "latencies_seconds": [
+        82.3534
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "reply does not contain 'cw-refunds'"
+          ],
+          "final_reply": "Got it \u2014 you're asking about returning the Midnight crewneck from Second Stitch Apparel and how the refund works. I'll pull up your order, check the store's return window, and confirm the refund method.\nFound your order for the Midnight crewneck \u2014 order **#89** from Second Stitch Apparel, delivered June 6th, total $282.\n\nHere's how it works for this store:\n\n**Can you return it?**\nYes, if it's within the return window. Second Stitch Apparel follows the 30-day window from delivery [policy: store-second-stitch-apparel-policy]. Since yours was delivered June 6th, you're within that 30 days. They do charge a restocking fee of up to 15% on opened items, as allowed by Cartwheel [policy: store-second-stitch-apparel-policy].\n\n**How is the refund paid?**\nPer Cartwheel's refund policy [policy: cw-refunds], approved refunds go back to the original payment method and arrive in 5 to 10 business days.\n\nSince your order is $282 (above $100), if you move forward the refund would be queued for review by a human support agent before posting \u2014 that's standard for amounts over $100 [policy: cw-refunds].\n\nWant me to start the return for order #89? If so, let me know if the item is unopened/opened and the reason for return.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-011",
+      "expected_write": false,
+      "failure_modes": [
+        "tool get_order called"
+      ],
+      "latencies_seconds": [
+        64.914
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "tool get_order called"
+          ],
+          "final_reply": "I can help with that return \u2014 let me check your orders and the store's return policy for you.",
+          "judge_reasons": {
+            "irrelevant_policy_detail": "{\n  \"critique\": \"The reply does not explain any policy rule. It contains no mention of the $100 auto-approval threshold, no restocking-fee rule or exemption, and no specific return window (30-day default or store override). It only states intent to check orders and policy. Since no rule is explained, there is no rule that fails to govern the case.\",\n  \"result\": \"Pass\"\n}"
+          },
+          "passed": false
+        }
+      ],
+      "runs": 1
+    }
+  ],
+  "cost_per_100_conversations_usd": 0.36335,
+  "cost_usd": 0.029068,
+  "created_at": "2026-10-14T02:16:27.822925+00:00",
+  "evaluated_case_runs": 8,
+  "git_commit": "5a11b939133a6725e515d811f8c3aad974752b1b",
+  "input_tokens": 24692,
+  "median_latency_seconds": 66.9552,
+  "model": "muse-1-1",
+  "output_tokens": 4376,
+  "price_date": "2026-10-09",
+  "prompt_sha256_12": "961cb3c26346",
+  "schema_version": 1,
+  "score": 0.0,
+  "split": "test",
+  "test_plan_sha256": "37346b7db06598dcfd12e68b864f48142240158bd4117d6d0cbfed0f5015f9aa",
+  "write_pass_5": 0
+}
