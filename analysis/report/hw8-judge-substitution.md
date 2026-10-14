@@ -69,3 +69,46 @@ The internal models have no public price list. All three are given the same plac
 $1.00 per million input and output tokens, dated 2026-10-09. The cost columns therefore
 measure token usage, not money: a configuration that costs twice as much used about twice
 the tokens.
+
+## Other departures from the handout
+
+**Models.** The handout's defaults (GLM 5.2, `gpt-5.5`, `claude-opus-4-6`) are not
+reachable from this machine. The internal gateway in `.env` lists exactly three models, the
+three Muse versions, so they fill all three comparison slots, with muse-1-3 as the
+development and search model (the Cartwheel model used in Homeworks 3 and 7). The judge
+stays on muse-1-1, a different model from the agent. `gepa_reflection` keeps a placeholder
+because GEPA was not used.
+
+**Commands.** `uv` is not installed here: its installer is a piped shell script, which was
+declined on security grounds. Every `uv run python ...` in the handout ran as
+`.venv/bin/python ...`.
+
+**Part C order.** Each layer was tested from the starting version and reverted afterwards,
+so that each change had to fix e-008 and e-009 on its own: prompt 2 of 2, tool 1 of 2,
+harness 2 of 2. The harness change was the last layer, so it was kept. The prompt change
+was then reapplied on top of it (784d389) as the starting point for Part D.
+
+**Part D.** The improve loop, not GEPA (GEPA would have needed extra wiring for the model
+nicknames). The loop's baseline run was charged to the search budget along with each
+candidate. Both candidates improved the development score, so the two-misses stopping rule
+never fired. The loop stopped at a time cap set by the student, with 48 of 150 evaluated
+case runs used. `improve-loop.jsonl` records the stop and the remaining failure: e-002
+asks before refunding in most runs, and its customer asked to return the item but never
+said "refund".
+
+**Final version commit.** `final_version.json` records 32bb610, the commit that added the
+Part C and D records. Its agent code is identical to a862b65, the last improve loop
+candidate, because `save_version` requires the development result to come from the
+current commit.
+
+**Interruptions.**
+- The first tool-change run lost its result when the judge returned a server error on the
+  last case. The runner saves only at the end, and the run did not use `--search`, so
+  nothing was charged. It was rerun unchanged. `judge_transcript` retries stuck and empty
+  judge jobs but not failed ones. Adding a retry would have changed `replay/` partway
+  through the experiment, so it was not added.
+- During the test batch the laptop slept for about three minutes (lid closed) while
+  configuration 1 was running. The batch resumed, and no run recorded an error.
+
+**Optional Harbor exercise.** Not attempted: Harbor needs Docker, which cannot be installed
+on this machine (see `hw6-ci-substitution.md`).
