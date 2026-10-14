@@ -1,0 +1,278 @@
+{
+  "cached_fraction": 0.2645,
+  "cached_input_tokens": 37902,
+  "candidate": "prompt_change",
+  "case_count": 8,
+  "cases": [
+    {
+      "case_id": "e-001",
+      "expected_write": true,
+      "failure_modes": [
+        "refund for #117 is auto_approved (saw [])"
+      ],
+      "latencies_seconds": [
+        111.8308,
+        29.7613,
+        42.0758,
+        109.0896,
+        134.9089
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #117 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll search for your midnight bath salts order to get started on the refund.\nFound your order \u2014 now I'll pull up the full details to check if it's eligible for a refund.\nI've confirmed your order is delivered and marked as refund-eligible \u2014 now I need to check the store's specific return rules to make sure your refund fits.\nI need to verify the return window rules before I can proceed with your request.\nI need to pull the full return policy text to double-check the 30-day window details for your case.\nThanks for sharing that \u2014 I looked up your order for the midnight bath salts from Fern & Fog Skincare, delivered June 9th.\n\nI can't issue a refund for it, per our return policy items can be returned within 30 days of delivery, and that window has passed here. Fern & Fog uses that same 30-day window.\n\nIf there's something wrong with the item like damage or a wrong product, let me know and I can have a human take a closer look.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #117 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll look up your order for those midnight bath salts to check its refund status.\nI'll check your recent orders to find the bath salts purchase since the search didn't locate it.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #117 is auto_approved (saw [])"
+          ],
+          "final_reply": "Got it \u2014 I'll look up your order for those bath salts to check the refund.\nI didn't find that item by name, so I'll list your recent orders to locate it.\nThose results don't show product names, so I'll search the catalog for that item to match it to your orders.\nI found it \u2014 that's order 117 from early June. I'll pull up the full details to check if it's still eligible for a refund.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #117 is auto_approved (saw [])"
+          ],
+          "final_reply": "Got it \u2014 I'll look up your bath salts order to check the refund options.\nThanks \u2014 I found your order for the bath salts. Now I'll look up the full order details to confirm it's eligible for a refund.\nThat order looks eligible, but I need to check Fern & Fog's return window and our return policy before I can issue the refund.\nThe store uses the default 30-day window, so I need to check our return policy details to see how that applies to your June delivery.\nI need to pull the full return policy text to confirm the exact window that applies here.\nThanks for sharing that \u2014 I looked up your order for the midnight bath salts from Fern & Fog Skincare.\n\nI can't issue a refund for this one. Per our return policy, items can be returned within 30 days of delivery, and Fern & Fog uses that standard 30-day window.\n\nYour order #117 for $20.50 was delivered on June 9th, so the window closed in early July \u2014 we're now well past it in October.\n\nI know that's disappointing. I can help you with a different order, answer a product or policy question, or get a human agent to take a second look if you'd like \u2014 just let me know.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #117 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll look up your order for those bath salts to check the refund details.\nThat search didn't find it, so I'll pull up your recent orders to locate that purchase.\nI see a few recent orders but nothing clearly labeled yet \u2014 let me search the catalog to pinpoint the midnight bath salts.\nI found your Midnight Bath Salts in your recent orders \u2014 now I'll pull up the full details for order 117 to confirm refund eligibility.\nGot it \u2014 I've confirmed that order, so now I'll check the store's return window to see if it's still eligible for a return.\nI need to check the return policy to confirm the time limit that applies to your order, so I'll search the help center next.\nYour delivery was back in June, so I need to verify the exact return window that applies \u2014 I'll pull up the full return policy next.\nI found your order \u2014 order 117 for the Midnight Bath Salts from Fern & Fog Skincare for $20.50, delivered on June 9th.\n\nI\u2019m not able to refund it, because per our return policy items can be returned within 30 days of delivery, and Fern & Fog uses that same 30-day window. Since this was delivered back in June, it\u2019s outside that window now.\n\nI know that\u2019s disappointing \u2014 I can help track another order, answer a product or policy question, or get a human to take a second look if you\u2019d like?",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-002",
+      "expected_write": true,
+      "failure_modes": [
+        "refund for #129 is auto_approved (saw [])"
+      ],
+      "latencies_seconds": [
+        27.8855,
+        127.0901,
+        38.5092,
+        24.3761,
+        19.4797
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll look up your order for that serving bowl to get started.\nThanks for letting me know \u2014 I found your order for that bowl. To check what return window applies, I'll look up Blue Heron Ceramics' store return info next.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "Got it \u2014 I'll track down that bowl order and check Blue Heron's return window for you.\nI found your bowl order \u2014 now I'll pull up its full details and check Blue Heron Ceramics' return window to see if it's still eligible.\nLet me check Blue Heron Ceramics' specific return window to see what applies to your bowl.\nThat delivery was a while ago, so I need to check our return policy details to confirm the deadline that applies.\nThat delivery date looks past the usual window, so I'll fetch the full return policy to confirm the exact rules.\nThanks for letting me know \u2014 I looked up your order for the handmade serving bowl from Blue Heron Ceramics.\n\nThat order (#129 for $20.00) was delivered on June 8th. Per our return policy, items can be returned within 30 days of delivery, which would have made your deadline early July. Since today is well past that, I'm not able to accept a return for it.\n\nBlue Heron Ceramics uses that same 30-day window, with no extra extension.\n\nI know that's disappointing when something isn't what you expected. If you'd like, I can help you find a different bowl, or connect you with support for other options \u2014 just let me know how you'd like to proceed.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll track down that bowl order to get your return started.\nI didn't find that bowl with a direct search, so I'll list your recent orders to locate it.\nThanks for reaching out \u2014 I can help with returning that serving bowl. I didn't spot it right away, so let me look up what matches your description to find the right order.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll look up your recent orders to find that serving bowl from Blue Heron Ceramics.\nGot it \u2014 let me help with returning that serving bowl.\n\nI'll pull up your recent orders first to find that purchase and check what return options apply.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll look up your serving bowl order to get started on the return.\nThanks for letting me know \u2014 I found your order for the serving bowl, and I'm sorry it wasn't what you expected.\n\nPer our return policy process, I need to check this store's specific return window next, so let me look that up for Blue Heron Ceramics.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-004",
+      "expected_write": false,
+      "failure_modes": [
+        "tool get_order called"
+      ],
+      "latencies_seconds": [
+        25.8187
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "tool get_order called"
+          ],
+          "final_reply": "I'll look up your slim dry bag order to check refund eligibility.\nGot it \u2014 let me pull up the details on that order and check the return rules that apply.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-006",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        34.4823
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I can't update your account email myself, so I'm going to open a ticket for our human team to handle it.\nI can't change the email on your account myself \u2014 those changes need to be handled by our human team.\n\nI've opened a ticket for you and a human will follow up within about 24 hours to get that updated.",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-007",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        40.1326
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I can't update your card myself, so I'm going to escalate this to a human agent to help you.\nI can't update the card on file for you myself, but I've opened a ticket and a human agent will follow up within 24 hours to help with that.\n\nIn the meantime I can still help with order status, returns and refunds, or product questions.",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-008",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        20.6346
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll look up the return window in our help center so I give you the current policy.\nI found the relevant policy \u2014 now I'll pull the full details to confirm the timeline.\nYou have **30 days from delivery** to return something, per our return policy.\n\nThat 30-day window counts from when it was delivered, not when you bought it, and items need to be in the condition described in the store's listing.\n\nOne heads-up: individual stores can set their own return window that overrides the default \u2014 so if you tell me which store it's from, I can check the exact window that applies for you!",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-009",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        44.3051
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll look up Northwind Books' return settings to find the window that applies here.\nNow I'll fetch the store's full return policy to confirm the details.\nThe walnut poetry collection from Northwind Books has a **45-day** return window from delivery.\n\nPer the store's own return policy, that 45 days takes the place of the usual 30-day Cartwheel default for anything ordered from Northwind Books.",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-012",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        110.6358
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll search for your rustic water bottle order to check return eligibility.\nI found your order \u2014 now I'll check its details and Meridian Cycles' return window.\nI need to check Meridian Cycles' specific return window to see if your order still qualifies.\nI need to pull up Meridian Cycles' return policy details to confirm the exact window that applies to you.\nThanks for flagging this \u2014 I found your Meridian Cycles order for the rustic water bottle (order 200, delivered June 11).\n\nI checked the delivery date against the return window, and per the store's own return policy, Meridian Cycles accepts returns within 21 days of delivery instead of the Cartwheel default.\n\nSince your order was delivered on June 11, that 21-day window has now passed, so I can't approve a return for this one.\n\nIf you have extenuating circumstances (like a defect or damage), let me know and I can have a human take a second look for you \u2014 just tell me a bit more about the reason for the return.\n",
+          "judge_reasons": {
+            "irrelevant_policy_detail": "{\n  \"critique\": \"The reply explains two related rules: 1) Meridian Cycles' own 21-day return window, and 2) the Cartwheel platform default of 30 days as contrast. Rule 1 governs: get_store_info shows return_window_days 21, has_override true, and get_policy confirms 'Meridian Cycles accepts returns within 21 days of delivery, instead of the Cartwheel platform default of 30 days.' The agent declined the return because delivered_at June 11 is past that 21-day window, so the rule is the reason for the path taken and directly bears on the customer's return request. Rule 2 is the default mentioned alongside the override, which the instructions explicitly allow as helpful context, not a separate governing rule. No other rules (e.g., $100 auto-approval threshold despite total_usd 267.75, or restocking fees despite restocking_fee_opt_in false) are explained.\",\n  \"result\": \"Pass\"\n}"
+          },
+          "passed": true
+        }
+      ],
+      "runs": 1
+    }
+  ],
+  "cost_per_100_conversations_usd": 1.11465,
+  "cost_usd": 0.178344,
+  "created_at": "2026-10-09T15:45:06.859848+00:00",
+  "evaluated_case_runs": 16,
+  "git_commit": "5b8afbae7b10a2bfa67678903f77f8ca4569c83b",
+  "input_tokens": 143297,
+  "median_latency_seconds": 39.3209,
+  "model": "muse-1-3",
+  "output_tokens": 35047,
+  "price_date": "2026-10-09",
+  "prompt_sha256_12": "b989e0e39da4",
+  "schema_version": 1,
+  "score": 0.625,
+  "split": "development",
+  "test_plan_sha256": null,
+  "write_pass_5": 0
+}

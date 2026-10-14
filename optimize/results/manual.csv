@@ -1,0 +1,5 @@
+candidate,layer,predicted_effect,dev_score,write_pass_5,cost_per_100_conversations_usd,decision,git_commit,result_file
+starting_version,none,baseline (unchanged agent),0.375,0,1.062894,keep,5a11b93,optimize/results/development-starting-muse-1-3-20261009-100904.json
+prompt_change,prompt,"e-008 and e-009 pass (score 0.375 to about 0.625); other cases unchanged; write_pass_5 stays 0; cost about the same",0.625,0,1.11465,revert,5b8afba,optimize/results/development-prompt_change-muse-1-3-20261009-102857.json
+tool_change,tool,"sometimes the policy id will still come through",0.375,0,0.785887,revert,5502396,optimize/results/development-tool_change-muse-1-3-20261013-135122.json
+harness_change,harness,"it will correctly describe the policy rather than citing it for both",0.625,0,1.027438,keep,2f82a4c,optimize/results/development-harness_change-muse-1-3-20261013-180807.json

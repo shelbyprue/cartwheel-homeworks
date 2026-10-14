@@ -1,5 +1,21 @@
 {
   "maximum_calls": 150,
-  "reservations": [],
-  "used_calls": 0
+  "reservations": [
+    {
+      "calls": 16,
+      "label": "loop_baseline",
+      "reserved_at": "2026-10-13T23:32:13.613932+00:00"
+    },
+    {
+      "calls": 16,
+      "label": "loop_no_narrate_rule",
+      "reserved_at": "2026-10-13T23:42:47.224664+00:00"
+    },
+    {
+      "calls": 16,
+      "label": "loop_trust_eligibility",
+      "reserved_at": "2026-10-14T00:53:36.644430+00:00"
+    }
+  ],
+  "used_calls": 48
 }
