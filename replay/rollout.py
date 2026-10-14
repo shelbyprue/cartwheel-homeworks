@@ -458,6 +458,7 @@ def judge_reply_with_text(judge: dict[str, Any], reply: str, docs: str) -> tuple
 # proxy's ~60 s idle cutoff cannot drop the call.
 
 JUDGE_POLL_SECONDS = 10
+JUDGE_FAILED_RETRY_SECONDS = 30
 # A full answer takes under 3 minutes; past this, cancel and resubmit once.
 JUDGE_MAX_WAIT_SECONDS = 15 * 60
 
@@ -540,9 +541,11 @@ def judge_transcript(
             budget = RETRY_TOKENS
             job, submitted = submit(budget), time.time()
             continue
-        if job.status == "failed" and attempt < 2:
+        if job.status == "failed" and attempt < 3:
             # A server-side failure ("The model failed to generate a response") is
-            # transient; resubmit once, as for a stuck job, before giving up.
+            # usually a passing overload; wait 30 s, then 60 s, and resubmit, so one
+            # bad minute doesn't discard a whole development run.
+            time.sleep(JUDGE_FAILED_RETRY_SECONDS * attempt)
             attempt += 1
             job, submitted = submit(budget), time.time()
             continue

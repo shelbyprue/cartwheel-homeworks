@@ -43,3 +43,7 @@ scenarios/demo_pilot_gt.json
 monitoring/output/
 .hw8-logs/
 .hw8-progress.md
+
+.hw9-logs/
+.hw9-progress.md
+.hw9-prep.md
