@@ -1,0 +1,94 @@
+{
+  "judge_id": "irrelevant_policy_detail-v6",
+  "model": "muse-1-1",
+  "sample": "first 5 sorted trace ids of the 118 the judge graded",
+  "requests": 5,
+  "input_tokens": 12747,
+  "output_tokens": 8324,
+  "mean_input_per_request": 2549.4,
+  "mean_output_per_request": 1664.8,
+  "output_to_input_ratio": 0.653,
+  "verdicts_matching_hw5": 5,
+  "calls": [
+    {
+      "trace_id": "033f6d2eac72578acc7e4535f5bdf23e",
+      "saved_verdict": "pass",
+      "matches_saved": true,
+      "verdict": "pass",
+      "attempts": [
+        {
+          "max_tokens": 16000,
+          "input_tokens": 3299,
+          "output_tokens": 1786,
+          "reasoning_tokens": 1576,
+          "visible_output_chars": 840,
+          "finish_reason": "stop"
+        }
+      ]
+    },
+    {
+      "trace_id": "0557a34f8d010bc7915e25b155221923",
+      "saved_verdict": "pass",
+      "matches_saved": true,
+      "verdict": "pass",
+      "attempts": [
+        {
+          "max_tokens": 16000,
+          "input_tokens": 2518,
+          "output_tokens": 1237,
+          "reasoning_tokens": 1061,
+          "visible_output_chars": 662,
+          "finish_reason": "stop"
+        }
+      ]
+    },
+    {
+      "trace_id": "0e22ebf26fa026704c41b97ab85ee747",
+      "saved_verdict": "pass",
+      "matches_saved": true,
+      "verdict": "pass",
+      "attempts": [
+        {
+          "max_tokens": 16000,
+          "input_tokens": 2609,
+          "output_tokens": 1538,
+          "reasoning_tokens": 1347,
+          "visible_output_chars": 753,
+          "finish_reason": "stop"
+        }
+      ]
+    },
+    {
+      "trace_id": "0f04faad0c783b23f41ce4fe24220d58",
+      "saved_verdict": "pass",
+      "matches_saved": true,
+      "verdict": "pass",
+      "attempts": [
+        {
+          "max_tokens": 16000,
+          "input_tokens": 2172,
+          "output_tokens": 1981,
+          "reasoning_tokens": 1791,
+          "visible_output_chars": 744,
+          "finish_reason": "stop"
+        }
+      ]
+    },
+    {
+      "trace_id": "0f1a4c58da11bca7bb4acaf781e49b95",
+      "saved_verdict": "pass",
+      "matches_saved": true,
+      "verdict": "pass",
+      "attempts": [
+        {
+          "max_tokens": 16000,
+          "input_tokens": 2149,
+          "output_tokens": 1782,
+          "reasoning_tokens": 1627,
+          "visible_output_chars": 608,
+          "finish_reason": "stop"
+        }
+      ]
+    }
+  ]
+}

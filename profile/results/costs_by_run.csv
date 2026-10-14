@@ -1,0 +1,12 @@
+cost_category,call_site,run,model,calls,input_tokens,output_tokens,output_tokens_visible_floor,cost_usd,method
+customer_conversation,server/app.py:210,"HW3 pilot, 30 scenarios",muse-1-3,106,174516,48810,6036,0.223326,estimated: input = characters/4 incl. tool definitions; output = input x 0.280 (HW8 measured agent ratio)
+customer_conversation,server/app.py:210,"HW3 final run, 250 scenarios",muse-1-3,1095,1884728,527138,60486,2.411866,estimated: input = characters/4 incl. tool definitions; output = input x 0.280 (HW8 measured agent ratio)
+customer_conversation,server/app.py:210,"HW7 after run, 50 scenarios",muse-1-3,157,257904,72133,7660,0.330037,estimated: input = characters/4 incl. tool definitions; output = input x 0.280 (HW8 measured agent ratio)
+customer_conversation,replay/rollout.py:213,HW8 development runs (8 result files),muse-1-3,128,1184581,277415,,1.461996,"measured (API usage); calls = conversations, model requests not saved; 171863 input tokens were cached"
+customer_conversation,replay/rollout.py:213,"HW8 test, configuration 1",muse-1-1,8,24692,4376,,0.029068,"measured (API usage); calls = conversations, model requests not saved; 21252 input tokens were cached"
+customer_conversation,replay/rollout.py:213,"HW8 test, configuration 2",muse-1-2,8,33465,4073,,0.037538,"measured (API usage); calls = conversations, model requests not saved; 16648 input tokens were cached"
+customer_conversation,replay/rollout.py:213,"HW8 test, configurations 3 and 4",muse-1-3,16,233951,45195,,0.279146,"measured (API usage); calls = conversations, model requests not saved; 40399 input tokens were cached"
+judge,analysis/tools/muse_classify.py:120,"HW5 judge, irrelevant_policy_detail v4 to v6",muse-1-1,197,585247,382166,36548,0.967413,estimated: input = characters/4 of prompt + trace; output = input x 0.653 (HW9 measured judge ratio); retries not recorded
+judge,monitoring/background_judge.py:92,"HW7 monitor, before and after periods",muse-1-1,40,126259,82447,6766,0.208706,estimated: input = characters/4 of prompt + trace; output = input x 0.653 (HW9 measured judge ratio); retries not recorded
+judge,replay/rollout.py:506,HW8 judge on e-011 and e-012,muse-1-1,12,35650,23279,2254,0.058929,"estimated: input = HW5 judge average (2971/call), traces not saved; output = input x 0.653; excludes 1 failed call and 8 setup checks"
+judge,profile/scripts/measure_judge_usage.py:66,HW9 judge usage measurement,muse-1-1,5,12747,8324,902,0.021071,measured (API usage)
