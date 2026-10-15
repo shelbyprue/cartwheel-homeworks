@@ -1,0 +1,8 @@
+{
+  "threshold": 0.0,
+  "rule": "lowest threshold with agreement_with_oracle >= 0.85 and no missed oracle failures on the Homework 5 dev labels",
+  "agreement_requirement": 0.85,
+  "also_required": "no missed oracle failures",
+  "chosen_on": "dev only, before running the proxy on the test labels",
+  "chosen_by": "student"
+}
