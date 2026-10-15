@@ -1,0 +1,18 @@
+{
+  "split": "test",
+  "conversations": 59,
+  "oracle_fails": 7,
+  "human_fails": 5,
+  "threshold": 0.0,
+  "agreement_with_oracle": 0.9661,
+  "disagreements_with_oracle": 2,
+  "agreement_with_human_labels": 0.8644,
+  "missed_oracle_fails": 1,
+  "missed_human_fails": 3,
+  "proxy_share": 1.0,
+  "cost_per_1000_verdicts_usd": 4.8528,
+  "oracle_alone_cost_per_1000_verdicts_usd": 4.9673,
+  "requirement": "agreement_with_oracle >= 0.85 and no missed oracle failures",
+  "requirement_met": false,
+  "decision": "reject"
+}

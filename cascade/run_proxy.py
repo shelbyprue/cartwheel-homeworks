@@ -15,9 +15,12 @@ conversations already done, so an interrupted run resumes. Never writes the real
 
 from __future__ import annotations
 
+import http.client
 import json
 import os
 import sys
+import time
+import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -59,6 +62,20 @@ def parse_confidence(content: str) -> float | None:
         return None
 
 
+def post_with_retries(req: urllib.request.Request, tries: int = 3) -> dict:
+    """The corporate proxy drops connections that stay silent for about a minute, which a
+    long reasoning call can trip. Resend a dropped call, up to three tries in all. A dropped
+    call may still be billed server-side without reporting its tokens."""
+    for attempt in range(1, tries + 1):
+        try:
+            return json.loads(urllib.request.urlopen(req, timeout=TIMEOUT).read())
+        except (http.client.RemoteDisconnected, ConnectionResetError, urllib.error.URLError):
+            if attempt == tries:
+                raise
+            print(f"    connection dropped, retry {attempt} of {tries - 1}", flush=True)
+            time.sleep(10)
+
+
 def ask(base: str, key: str, model: str, prompt: str, trace: dict) -> dict:
     attempts = []
     for budget in (MAX_TOKENS, RETRY_TOKENS):
@@ -76,7 +93,7 @@ def ask(base: str, key: str, model: str, prompt: str, trace: dict) -> dict:
         req = urllib.request.Request(
             f"{base}/chat/completions", data=json.dumps(payload).encode(),
             headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
-        data = json.loads(urllib.request.urlopen(req, timeout=TIMEOUT).read())
+        data = post_with_retries(req)
         usage = data.get("usage") or {}
         choice = (data.get("choices") or [{}])[0]
         content = (choice.get("message") or {}).get("content") or ""
