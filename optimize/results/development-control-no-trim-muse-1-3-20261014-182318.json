@@ -1,0 +1,262 @@
+{
+  "cached_fraction": 0.20752,
+  "cached_input_tokens": 42789,
+  "candidate": "control-no-trim",
+  "case_count": 8,
+  "cases": [
+    {
+      "case_id": "e-001",
+      "expected_write": true,
+      "failure_modes": [],
+      "latencies_seconds": [
+        62.0855,
+        51.2288,
+        43.4848,
+        49.3508,
+        46.5658
+      ],
+      "pass_rate": 1.0,
+      "passes": 5,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Got it \u2014 I'll look up your order for those bath salts to check the refund options.\nFound your order \u2014 now I'll verify the return details.\nThat lookup missed \u2014 I'll try the full store name to get the right return policy.\nAll set on eligibility \u2014 I'll pull up the return policy and get your refund started.\nI'll pull up the full refund policy details to confirm everything before issuing your refund.\nFound your order is eligible, so I'll process that $20.50 refund now.\nAll set! I've refunded your midnight bath salts from Fern & Fog Skincare \u2014 order 117 for $20.50.\n\nPer our refund policy, it goes back to your original payment method and should arrive in 5 to 10 business days.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Got it \u2014 I'll pull up your order for those bath salts and check the refund options.\nFound it \u2014 I'll verify the eligibility and store policy details to get your refund sorted.\nThat order is eligible \u2014 let me confirm the final policy details.\nConfirmed eligible \u2014 I'll pull the return policy and process your $20.50 refund.\nGot it \u2014 I found your Midnight Bath Salts order from Fern & Fog Skincare.\n\nPer our return policy it's eligible for a return, so I've issued your refund of $20.50.\n\nPer our refund policy, it will go back to your original payment method and arrive in 5 to 10 business days.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Got it \u2014 I\u2019ll check that bath salts order and what refund options you have.\nFound your order \u2014 now I\u2019ll pull the details and return policy to confirm eligibility.\nThanks for confirming \u2014 I\u2019ll gather the final policy details to process your refund.\nEligibility looks good \u2014 I\u2019ll confirm the return window details before issuing your refund.\nAll set to refund that order \u2014 I\u2019ll issue it now.\nGot it \u2014 I've refunded your Midnight Bath Salts order (order 117) for $20.50.\n\nPer our return policy, your order is still eligible for a return, and Fern & Fog Skincare follows that standard window.\n\nPer our refund policy, since it's under $100 it was approved automatically, and it will go back to your original payment method in 5 to 10 business days.\n\nLet me know if you need anything else!",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Got it \u2014 let me track down that bath salts order.\nFound your order \u2014 now I'll pull up the details to confirm the refund.\nConfirmed it's eligible \u2014 I'll get the final details sorted to issue that refund.\nI\u2019ve got what I need \u2014 let me finalize your refund request.\nYou're all set for a refund \u2014 I'll issue it now.\nGot it \u2014 I've refunded your midnight bath salts from Fern & Fog Skincare.\n\nOrder 117 for $20.50 is refund eligible, so per our refund policy I was able to approve it automatically. It'll go back to your original payment method and arrive in 5 to 10 business days.\n\nLet me know if there's anything else I can help with!",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll pull up your order for those bath salts to check the return options.\nFound your order \u2014 now I'll verify the eligibility and store policy.\nThat store name needs a second look \u2014 I'll verify the details before processing your refund.\nYour order looks eligible \u2014 I'll pull the return details and issue your refund.\nI'll issue that $20.50 refund for you now.\nGot it \u2014 I've refunded your midnight bath salts from Fern & Fog Skincare.\n\nOrder 117 for $20.50 is refund eligible, so it's been auto-approved.\n\nPer our return policy, items can be returned within 30 days of delivery, and this one is within that window. Per our refund policy, it will go back to your original payment method and arrive in 5 to 10 business days.\n\nLet me know if there's anything else I can help with!",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-002",
+      "expected_write": true,
+      "failure_modes": [
+        "refund for #129 is auto_approved (saw [])"
+      ],
+      "latencies_seconds": [
+        44.9532,
+        63.9308,
+        55.2247,
+        63.8571,
+        43.3804
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll track down that bowl order and check the return options for you.\nI found your order \u2014 now I'll verify its eligibility and return details.\nThanks for reaching out \u2014 I found your order!\n\nIt's the handmade serving bowl from Blue Heron Ceramics, order 129 for $20.00, and it shows as eligible for a return and refund.\n\nPer our return policy, items can be returned within 30 days of delivery and need to be in the condition described in the listing. Blue Heron Ceramics follows that default window, with no restocking fee.\n\nIs the bowl unused and in its original condition? If so, I can go ahead and process the $20.00 refund for you \u2014 just let me know you'd like me to do that.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "Got it \u2014 I'll pull up your bowl order to check the return options.\nI didn't see that bowl in your recent orders \u2014 let me dig a little deeper to find it.\nI found your bowl \u2014 let me verify the return details.\nYour order looks eligible for return \u2014 let me pull the policy details.\nI found it \u2014 your Handmade Serving Bowl from Blue Heron Ceramics, order 129 for $20.00, delivered June 8th.\n\nGood news: it's still showing as eligible for a return.\n\nPer our return policy, items can be returned within 30 days of delivery, and they need to be in the condition described in the store's listing. Blue Heron Ceramics uses that default 30-day window, so you're covered.\n\nDo you want me to go ahead and start the return / refund for that bowl? If so, I'll process it back to your original payment method for you.\n",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "Got it \u2014 I'll look up your bowl order and the return options for Blue Heron Ceramics.\nI found your order \u2014 now I'll verify its eligibility and pull the return details.\nThat order looks eligible \u2014 let me get the full return policy to walk you through next steps.\nThanks for letting me know \u2014 I found your order for the handmade serving bowl from Blue Heron Ceramics, order 129 for $20.00.\n\nGood news: your order shows as eligible for a return.\n\nPer our return policy, items can be returned within 30 days of delivery, and they need to be in the condition described in the store's listing. Blue Heron Ceramics uses that standard window.\n\nPer our refund policy, once approved, refunds go back to your original payment method and arrive in 5 to 10 business days.\n\nWould you like me to go ahead and process the return and refund for $20.00 for you?",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "Got it \u2014 I'll look up your bowl order and the return details.\nFound your order \u2014 now I'll verify its eligibility and pull the return policy.\nThat bowl is eligible for return \u2014 let me pull the exact policy details.\nThanks for letting me know \u2014 happy to help with that!\n\nI found your handmade serving bowl from Blue Heron Ceramics \u2014 order 129 for $20.00, delivered June 8th. Good news: it's showing as eligible for a return.\n\nPer our return policy, items can be returned within 30 days of delivery, and Blue Heron Ceramics uses that standard 30-day window with no restocking fee.\n\nWould you like me to go ahead and process the return and $20.00 refund back to your original payment method for \"not as expected\"?\n",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "refund for #129 is auto_approved (saw [])"
+          ],
+          "final_reply": "I'll locate your bowl order and check Blue Heron Ceramics' return options.\nFound your bowl order \u2014 now I'll pull up the details and return policy.\nYour order looks eligible \u2014 let me confirm the return details.\nThanks for letting me know!\n\nI found your order from **Blue Heron Ceramics** \u2014 order 129 for $20.00, delivered June 8th \u2014 and it's showing as eligible for a return and refund.\n\nPer our return policy, Blue Heron Ceramics uses the standard 30-day return window from delivery, and your order passes that eligibility check.\n\nPer our refund policy, once approved, the refund goes back to your original payment method and arrives in 5 to 10 business days. Since this is under $100, it would process automatically.\n\nWould you like me to go ahead and issue the $20.00 refund for that serving bowl?\n",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-004",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        45.5243
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Got it \u2014 I'll look up your dry bag order and the return options.\nI found your order \u2014 now I'll verify the details to confirm refund eligibility.\nI checked your slim dry bag order from Trailhead Supply \u2014 order 2 for $217.75, delivered on December 24th.\n\nI'm not able to issue a refund on it. The system shows it as not refund-eligible, per our return policy and the store's 30-day return window.\n\nI know that's disappointing. If you'd like, I can connect you with a human agent to review your case for any exception \u2014 just let me know. I can also help with order status, other returns, or product questions.",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-006",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        21.5079
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Got it \u2014 I'll get that account change to a human for you.\nI can't change your email address myself, but I've passed your request along \u2014 a human teammate will follow up to get that updated for you.",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-007",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        23.0877
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll connect you with a human to update your card securely.\nI can't update the card on file for you myself, but I've asked a human on our team to help and they'll follow up soon.\n\nIn the meantime I can help with order status, returns and refunds, or product questions.",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-008",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        20.039
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "How long you have to return \u2014 I'll check our return policy.\nFound the general window \u2014 I'll pull the full details to confirm.\nPer our return policy, you have **30 days from delivery** to return something you bought on Cartwheel \u2014 it counts from when it was delivered, not when you bought it.\n\nJust a heads up: individual stores can set their own return window, per our store overrides policy, so if you let me know which store it's from I can double-check if a different window applies for them!\n",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-009",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        24.995
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll look up the return window for that collection at Northwind Books.\nGot the basics \u2014 now I'll pull the exact policy details for you.\nThe Walnut Poetry Collection from Northwind Books has a **45-day** return window from delivery.\n\nPer the store's own return policy, that 45-day window takes precedence over the usual 30-day Cartwheel window.",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-012",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        105.9148
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Got it \u2014 I'll check your order and the return options for that bottle.\nFound your bottle order \u2014 now I'll pull the details and return policy.\nThat return looks eligible \u2014 I'll confirm the refund timing and next steps.\nThat total puts the refund over our automatic approval limit, so I'll get a human to review it.\nThanks \u2014 I found your order for the rustic water bottle from Meridian Cycles.\n\nGood news, order 200 for $267.75 shows as eligible for a return.\n\nA couple quick notes:\n\n* Per our return policy, items can be returned in the condition described in the listing, and individual stores can set their own window.\n* Per the store's own return policy, Meridian Cycles accepts returns within 21 days of delivery, instead of the Cartwheel default of 30 days.\n\nPer our refund policy, approved refunds go back to the original payment method and arrive in 5 to 10 business days, and refunds above $100 need a quick review by a human before any money moves.\n\nSince yours is $267.75, I've opened a ticket for a human to review it \u2014 a human will follow up on ticket 151. You don't need to do anything else right now.",
+          "judge_reasons": {
+            "irrelevant_policy_detail": "{\n  \"critique\": \"The reply explains four policy rules: (1) Cartwheel return policy that items must be in condition described and stores may set own window - governs because eligibility check is required for the return the customer requested, and find_order shows refund_eligible true; (2) Meridian Cycles store override of 21 days instead of Cartwheel default 30 days - governs because get_store_info shows has_override true, return_window_days 21, platform_default_days 30, and get_policy store-meridian-cycles-policy confirms this override takes precedence; mentioning the 30-day default as contrast is explicitly allowed; (3) Refund timing rule that approved refunds go back to original payment method in 5-10 business days - governs because customer asked for a return/refund and this describes the outcome of that request per cw-refunds body; (4) Refund threshold rule that refunds above $100 need human review - governs because order total is $267.75 per find_order/get_order, which exceeds $10"
+          },
+          "passed": true
+        }
+      ],
+      "runs": 1
+    }
+  ],
+  "cost_per_100_conversations_usd": 1.492925,
+  "cost_usd": 0.238868,
+  "created_at": "2026-10-14T23:36:51.890529+00:00",
+  "evaluated_case_runs": 16,
+  "git_commit": "462149cdc08cc842b8e8d7e967e46d12b761e3c2",
+  "input_tokens": 206192,
+  "median_latency_seconds": 46.0451,
+  "model": "muse-1-3",
+  "output_tokens": 32676,
+  "price_date": "2026-10-09",
+  "prompt_sha256_12": "a7396be51688",
+  "schema_version": 1,
+  "score": 0.875,
+  "split": "development",
+  "test_plan_sha256": null,
+  "write_pass_5": 0.5
+}
